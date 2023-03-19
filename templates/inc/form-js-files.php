@@ -2,4 +2,4 @@
 <script src="<?php echo ROOT_URL; ?>/lib/js/vendor/popper/popper.min.js"></script>
 <script src="<?php echo ROOT_URL; ?>/lib/js/vendor/bootstrap/bootstrap.min.js"></script>
 <script src="<?php echo ROOT_URL; ?>/lib/js/vendor/bootstrap/bootstrap-datepicker.min.js"></script>
-<script src="<?php echo ROOT_URL; ?>/lib/js/app/form.js"></script>
+<script type="module" src="<?php echo ROOT_URL; ?>/lib/js/app/form.js"></script>
