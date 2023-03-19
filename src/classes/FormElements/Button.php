@@ -11,7 +11,8 @@ class Button extends HtmlElement
 		parent::__construct($label);
 		$this->addAttributeKeys(['type']);
 		$this->addAttributes([
-			'type' => $type
+			'type' => $type,
+			'class' => 'btn btn-primary'
 		]);
 		$this->setTemplateFile('button.php');
 	}
