@@ -22,14 +22,17 @@ require ROOT_PATH . '/templates/inc/head.php';
 				</div>
 			</div>
 			<div class="form-body">
-				<div class="row form-wrapper">
-					<div id="post-success" class="row alert alert-success div-hidden" role="alert">
-						<h4>Job added</h4>
+				<div id="post-success" class="row alert alert-success" role="alert">
+					<h4>Job added</h4>
+					<br/>
+					<p>
 						<a href="/">Add another job</a>
-					</div>
-					<div id="post-failed" class="row alert alert-danger div-hidden" role="alert">
-						Error
-					</div>
+					</p>
+				</div>
+				<div id="post-failed" class="row alert alert-danger " role="alert">
+					<h4>Error</h4>
+				</div>
+				<div class="row form-wrapper">
 					<?php
 					// todo fix apache in order to redirect ajax-post to /src/files/requests/ajax-post.php
 					?>

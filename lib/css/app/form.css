@@ -10,6 +10,15 @@
     content: "*";
 }
 
+div.alert {
+    width: 200px;
+}
+
+div.alert-success a {
+    color: #155724;
+    font-size: 18px;
+}
+
 div.row {
     margin-bottom: 25px;
 }
