@@ -1,8 +1,13 @@
 <?php
 $objAttributes = $obj->getAttributes();
 $objAttributes['class'] .= ' form-control';
+
 if ($class) {
 	$objAttributes['class'] .= " $class";
+}
+
+if ($additionalAttributes) {
+	$objAttributes = array_merge($objAttributes, $additionalAttributes);
 }
 
 $mapFn = function ($key, $value) {
