@@ -4,9 +4,8 @@ namespace App\FormElements;
 
 class SubmitButton extends Button
 {
-	public function __construct(string $name, string $type, ?string $label, $value = null)
+	public function __construct(string $label)
 	{
-		parent::__construct($name, 'submit');
+		parent::__construct($label, 'submit');
 	}
-
 }
