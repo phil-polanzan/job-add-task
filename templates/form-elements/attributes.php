@@ -11,6 +11,9 @@ if ($additionalAttributes) {
 }
 
 $mapFn = function ($key, $value) {
+	$key = trim($key);
+	$value = trim($value);
+
 	return "$key=\"$value\"";
 };
 
