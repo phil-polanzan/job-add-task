@@ -71,14 +71,16 @@ abstract class FormElement extends HtmlElement
 		require $file;
 	}
 
-	protected function parseClassAttribute(array $attributes) : array {
+	public function addAttributes(array $attributes) : void
+	{
+		parent::addAttributes($attributes);
+
 		if (!isset($attributes['id'])) {
 			$attributes['id'] = $this->name;
 		}
 
 		$attributes['required'] ??= false;
 		$attributes['required'] = (bool)$attributes['required'];
-
-		return $attributes;
+		$this->setAttributes(array_merge($this->getAttributes(), $attributes));
 	}
 }
