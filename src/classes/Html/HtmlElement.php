@@ -8,13 +8,16 @@ abstract class HtmlElement
 {
 
 	private string $label;
-	private array $attributeKeys;
-	private string $templateFile;
-	private array $attributes;
+	private array $attributeKeys = ['class'];
+	private ?string $templateFile = null;
+	private array $attributes = [];
 
 	public function __construct(string $label)
 	{
-		$this->label = $label;
+		$this->label = trim($label);
+		$this->addAttributes([
+			'class' => ''
+		]);
 	}
 
 	protected function setAttributes(array $attributes) : void
@@ -61,19 +64,31 @@ abstract class HtmlElement
 		return $this->attributes[$key] ?? null;
 	}
 
-
-	/**
-	 * @throws HtmlElementException
-	 */
 	public function __get(string $key)
 	{
-		if (in_array($key, $this->getAttributeKeys()) && $value = $this->getAttribute($key)) {
-			return $value;
-		} elseif (in_array($key, ['label'])) {
-			return $this->$key;
-		}
+		$value = $this->getAttribute($key);
 
-		throw new HtmlElementException("$key attribute not found");
+		if (in_array($key, $this->getAttributeKeys()) && !is_null($value)) {
+			return $value;
+		} elseif (in_array($key, ['label', 'attributes', 'attributeKeys'])) {
+			$value = null;
+
+			switch ($key) {
+				case 'label':
+					$value = $this->label;
+					break;
+
+				case 'attributes':
+					$value = $this->attributes;
+					break;
+
+				case 'attributeKeys':
+					$value = $this->attributeKeys;
+					break;
+			}
+
+			return  $value;
+		}
 	}
 
 	public function __set(string $key, $value) : void
@@ -103,5 +118,10 @@ abstract class HtmlElement
 	protected function setTemplateFile(string $file) : void
 	{
 		$this->templateFile = $file;
+	}
+
+	public static function formatString(string $string) : string
+	{
+		return str_replace(' ', '-', strtolower($string));
 	}
 }
