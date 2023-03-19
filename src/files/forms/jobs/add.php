@@ -29,7 +29,7 @@ require ROOT_PATH . '/templates/inc/head.php';
 					Error
 				</div>
 				<div class="row form-wrapper">
-					<form class="app-form model-form" action="<?php echo ROOT_URL; ?>/ajax_save" method="post" novalidate>
+					<form class="app-form model-form" action="<?php echo ROOT_URL; ?>/ajax-save" method="post" novalidate>
 						<div class="row">
 							<label for="" class="form-label required">Title</label>
 							<input type="text" id="title" name="title" class="form-control" maxlength="50" required/>
