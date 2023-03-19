@@ -2,8 +2,11 @@
 .app-form label {
     color: #007bff;
     text-transform: uppercase;
-    font: 10px sans-serif bold;
-    margin-bottom: 8px
+    font-size: 13px;
+    font-weight: bold;
+    font-family: sans-serif;
+    margin-bottom: 8px;
+    clear: left;
 }
 
 .app-form label.required::after {
@@ -19,8 +22,10 @@ div.alert-success a {
     font-size: 18px;
 }
 
-div.row {
+div.row:not(.div-hidden) {
     margin-bottom: 25px;
+    display: block;
+    width: 600px;
 }
 
 td.today.day {

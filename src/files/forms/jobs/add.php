@@ -43,8 +43,8 @@ require ROOT_PATH . '/templates/inc/head.php';
 							<div class="invalid-feedback">Please fill out this field.</div>
 						</div>
 						<div class="row">
-							<label for="description" class="form-label">Description</label>
-							<textarea id="description" name="description" class="form-control" maxlength="255"></textarea>
+							<label for="description" class="form-label">Description</label><br/>
+							<textarea id="description" name="description" class="form-control html-editor" maxlength="255"></textarea>
 						</div>
 						<div class="row">
 							<label for="estimated_hours" class="form-label">Estimated Hours</label>

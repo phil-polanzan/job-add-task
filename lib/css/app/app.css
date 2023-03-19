@@ -27,7 +27,9 @@ footer {
 
 footer p {
     color: #007bff;
-    font: 10px sans-serif bold;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: sans-serif;
     margin-bottom: 8px;
     margin-left: 50px
 }
