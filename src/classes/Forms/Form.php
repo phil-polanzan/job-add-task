@@ -38,11 +38,11 @@ class Form extends HtmlElement
 	public function setElements(array $elements) : void
 	{
 		foreach ($elements as $element) {
-			if (!is_object($element) || !is_subclass_of(get_class($element), 'App\FormElements\FormElement')) {
+			if (!is_object($element) || !is_subclass_of(get_class($element), 'App\Html\HtmlElement')) {
 				throw new FormException("Error on setting elements");
 			}
 
-			$this->elements[$element->name] = $element;
+			$this->elements[self::formatString($element->label)] = $element;
 		}
 	}
 
@@ -51,7 +51,7 @@ class Form extends HtmlElement
 		parent::addAttributes($attributes);
 
 		if (!isset($attributes['id'])) {
-			$attributes['id'] = str_replace(' ', '-', strtolower(trim($this->title)));
+			$attributes['id'] = self::formatString((trim($this->title)));
 		}
 
 		$this->setAttributes(array_merge($this->getAttributes(), $attributes));
