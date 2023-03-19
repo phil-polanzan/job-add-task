@@ -29,7 +29,10 @@ require ROOT_PATH . '/templates/inc/head.php';
 					<div id="post-failed" class="row alert alert-danger div-hidden" role="alert">
 						Error
 					</div>
-					<form id="job-add" class="app-form model-form" action="<?php echo ROOT_URL; ?>/ajax-save" method="post" novalidate>
+					<?php
+					// todo fix apache in order to redirect ajax-post to /src/files/requests/ajax-post.php
+					?>
+					<form id="job-add" class="app-form model-form" action="<?php echo ROOT_URL; ?>/src/files/requests/ajax-post.php" method="post" novalidate>
 						<div class="row">
 							<label for="" class="form-label required">Title</label>
 							<input type="text" id="title" name="title" class="form-control" maxlength="50" required/>
