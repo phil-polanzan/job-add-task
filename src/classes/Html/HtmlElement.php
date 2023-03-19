@@ -2,10 +2,20 @@
 
 namespace App\Html;
 
+use App\Exceptions\HtmlElementException;
+
 abstract class HtmlElement
 {
+
+	private string $label;
 	private array $attributeKeys;
+	private string $templateFile;
 	private array $attributes;
+
+	public function __construct(string $label)
+	{
+		$this->label = $label;
+	}
 
 	protected function setAttributes(array $attributes) : void
 	{
@@ -49,5 +59,49 @@ abstract class HtmlElement
 	public function getAttribute($key)
 	{
 		return $this->attributes[$key] ?? null;
+	}
+
+
+	/**
+	 * @throws HtmlElementException
+	 */
+	public function __get(string $key)
+	{
+		if (in_array($key, $this->getAttributeKeys()) && $value = $this->getAttribute($key)) {
+			return $value;
+		} elseif (in_array($key, ['label'])) {
+			return $this->$key;
+		}
+
+		throw new HtmlElementException("$key attribute not found");
+	}
+
+	public function __set(string $key, $value) : void
+	{
+		if (in_array($key, $this->getAttributeKeys())) {
+			$this->addAttributes([$key => $value]);
+		}
+
+		throw new HtmlElementException("$key attribute not found");
+	}
+
+	/**
+	 * @throws HtmlElementException
+	 */
+	public function render() : void
+	{
+		$file = ROOT_PATH . "/templates/form-elements/{$this->templateFile}";
+
+		if (!file_exists($file)) {
+			throw new HtmlElementException("$file not found");
+		}
+
+		$args = ['obj' => $this];
+		require $file;
+	}
+
+	protected function setTemplateFile(string $file) : void
+	{
+		$this->templateFile = $file;
 	}
 }

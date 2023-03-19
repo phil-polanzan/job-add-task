@@ -8,13 +8,11 @@ use App\Html\HtmlElement;
 
 abstract class FormElement extends HtmlElement
 {
-	private string $label;
-	private string $templateFile;
 	private string $notes;
 
 	public function __construct(string $name, ?string $label)
 	{
-		$this->label = $label ?? $name;
+		parent::__construct($label ?? $name);
 		$this->addAttributeKeys(['name', 'id', 'required', 'class']);
 		$this->addAttributes(['name' => $name]);
 	}
@@ -24,19 +22,10 @@ abstract class FormElement extends HtmlElement
 	 */
 	public function __get(string $key)
 	{
-		if (in_array($key, $this->getAttributeKeys()) && $value = $this->getAttribute($key)) {
+		if ($value = parent::__get($key)) {
 			return $value;
-		} elseif (in_array($key, ['label', 'notes'])) {
+		} elseif (in_array($key, ['notes'])) {
 			return $this->$key;
-		}
-
-		throw new HtmlElementException("$key attribute not found");
-	}
-
-	public function __set(string $key, $value) : void
-	{
-		if (in_array($key, $this->getAttributeKeys())) {
-			$this->addAttributes([$key => $value]);
 		}
 
 		throw new HtmlElementException("$key attribute not found");
@@ -45,30 +34,6 @@ abstract class FormElement extends HtmlElement
 	public function setNotes(string $notes) : void
 	{
 		$this->notes = $notes;
-	}
-
-	protected function setTemplateFile(string $file) : void
-	{
-		$this->templateFile = $file;
-	}
-
-	/**
-	 * @throws HtmlElementException
-	 */
-	public function render() : void
-	{
-		$file = ROOT_PATH . "/templates/form-elements/{$this->templateFile}";
-
-		if (!file_exists($file)) {
-			throw new HtmlElementException("$file not found");
-		}
-
-		$mapFn = function ($key, $value) {
-			return "$key=\"$value\"";
-		};
-
-		$args = ['obj' => $this];
-		require $file;
 	}
 
 	public function addAttributes(array $attributes) : void
