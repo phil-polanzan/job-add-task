@@ -35,7 +35,7 @@ class Form extends HtmlElement
 		throw new HtmlElementException("$key attribute not found");
 	}
 
-	public function setElements(array $elements)
+	public function setElements(array $elements) : void
 	{
 		foreach ($elements as $element) {
 			if (!is_object($element) || !is_subclass_of(get_class($element), 'App\FormElements\FormElement')) {
