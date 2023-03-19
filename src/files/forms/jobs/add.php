@@ -24,7 +24,8 @@ require ROOT_PATH . '/templates/inc/head.php';
 			<div class="form-body">
 				<div class="row form-wrapper">
 					<div id="post-success" class="row alert alert-success div-hidden" role="alert">
-						Job added
+						<h4>Job added</h4>
+						<a href="/">Add another job</a>
 					</div>
 					<div id="post-failed" class="row alert alert-danger div-hidden" role="alert">
 						Error
