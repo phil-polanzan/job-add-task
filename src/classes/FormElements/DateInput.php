@@ -1,0 +1,13 @@
+<?php
+
+namespace App\FormElements;
+
+class DateInput extends Input
+{
+	public function __construct(string $name, string $type, ?string $label, $value = null)
+	{
+		parent::__construct($name, 'text', $label);
+		$this->addAttributeKeys(['data-date-format']);
+		$this->setTemplateFile('input.php');
+	}
+}
