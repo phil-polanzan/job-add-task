@@ -22,14 +22,14 @@ require ROOT_PATH . '/templates/inc/head.php';
 				</div>
 			</div>
 			<div class="form-body">
-				<div id="post-success" class="row alert alert-success div-hidden" role="alert">
-					Job added
-				</div>
-				<div id="post-failed" class="row alert alert-danger div-hidden" role="alert">
-					Error
-				</div>
 				<div class="row form-wrapper">
-					<form class="app-form model-form" action="<?php echo ROOT_URL; ?>/ajax-save" method="post" novalidate>
+					<div id="post-success" class="row alert alert-success div-hidden" role="alert">
+						Job added
+					</div>
+					<div id="post-failed" class="row alert alert-danger div-hidden" role="alert">
+						Error
+					</div>
+					<form id="job-add" class="app-form model-form" action="<?php echo ROOT_URL; ?>/ajax-save" method="post" novalidate>
 						<div class="row">
 							<label for="" class="form-label required">Title</label>
 							<input type="text" id="title" name="title" class="form-control" maxlength="50" required/>
@@ -60,7 +60,7 @@ require ROOT_PATH . '/templates/inc/head.php';
 							<div class="invalid-feedback">End Date cannot be smaller than Start Date.</div>
 						</div>
 						<div class="row">
-							<button class="btn btn-primary" type="submit">Submit form</button>
+							<button class="btn btn-primary" type="submit">Submit</button>
 						</div>
 					</form>
 				</div>
