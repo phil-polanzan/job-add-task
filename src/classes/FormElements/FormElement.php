@@ -22,10 +22,12 @@ abstract class FormElement extends HtmlElement
 	 */
 	public function __get(string $key)
 	{
-		if ($value = parent::__get($key)) {
+		$value = parent::__get($key);
+
+		if (!is_null($value)) {
 			return $value;
-		} elseif (in_array($key, ['notes'])) {
-			return $this->$key;
+		} elseif ($key == 'notes') {
+			return $this->notes;
 		}
 
 		throw new HtmlElementException("$key attribute not found");
@@ -41,7 +43,7 @@ abstract class FormElement extends HtmlElement
 		parent::addAttributes($attributes);
 
 		if (!isset($attributes['id'])) {
-			$attributes['id'] = $this->name;
+			$attributes['id'] = $attributes['name'];
 		}
 
 		$attributes['required'] ??= false;
