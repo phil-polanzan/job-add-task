@@ -1,0 +1,33 @@
+body {
+    background-color: #f9f9f9;
+}
+
+h2 {
+    margin-left: 55px;
+}
+
+h2, h3 {
+    color: #007bff;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+main {
+    margin-top: 20px;
+    margin-left: 90px;
+}
+
+div.div-hidden {
+    display: none;
+}
+
+footer {
+    margin-top: 20px;
+}
+
+footer p {
+    color: #007bff;
+    font: 10px sans-serif bold;
+    margin-bottom: 8px;
+    margin-left: 50px
+}

@@ -3,6 +3,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Job Add Task</title>
 	<link rel="icon" type="image/x-icon" href="<?php echo ROOT_URL ?>/lib/images/logo.png" sizes="32x32" />
+	<link rel="stylesheet" href="<?php echo ROOT_URL; ?>/lib/css/app/app.css" id="app-css" type="text/css" media="all">
 
 	<?php
 	if ($isAdminForm) {

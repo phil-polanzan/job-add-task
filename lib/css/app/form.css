@@ -1,0 +1,21 @@
+
+.app-form label {
+    color: #007bff;
+    text-transform: uppercase;
+    font: 10px sans-serif bold;
+    margin-bottom: 8px
+}
+
+.app-form label.required::after {
+    content: "*";
+}
+
+div.row {
+    margin-bottom: 25px;
+}
+
+td.today.day {
+    background-image: none !important;
+    background-color: #007bff !important;
+    color: #ffffff !important;
+}
