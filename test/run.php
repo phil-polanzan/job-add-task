@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . '/../vendor/autoload.php';
+include dirname(__DIR__) . '/bootstrap-app.php';
 use App\Terminal\Messenger;
 use App\Exceptions\AppException;
 
