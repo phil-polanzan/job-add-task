@@ -1,0 +1,13 @@
+<?php
+
+namespace App\FormElements;
+
+class HiddenInput extends Input
+{
+	public function __construct(string $name, $value)
+	{
+		parent::__construct($name, 'hidden', null, $value);
+		$this->addAttributeKeys(['type', 'value']);
+		$this->setTemplateFile('hidden_input.php');
+	}
+}
