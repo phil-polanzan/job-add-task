@@ -40,3 +40,8 @@ Restart Apache
 Hava a look at the following links:
 1. [Link](https://www.cloudways.com/blog/configure-virtual-host-on-windows-10-for-wordpress/);
 2. [Link](https://stackoverflow.com/questions/2658173/set-up-apache-virtualhost-on-windows);
+
+## Run tests
+In the project directory there's a **test** directory, to run them, with the terminal go the test directory
+you could run all of them withe following command `php run.php` or you could just execute the ones in a specific directory
+e.g. `php run.php --test-dir='ModelProperties/JobHour'`.
