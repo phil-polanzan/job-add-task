@@ -9,6 +9,7 @@ use App\Html\HtmlElement;
 abstract class FormElement extends HtmlElement
 {
 	private string $notes = '';
+	private string $validationErrorMessage = '';
 
 	public function __construct(string $name, ?string $label)
 	{
@@ -26,8 +27,20 @@ abstract class FormElement extends HtmlElement
 
 		if (!is_null($value)) {
 			return $value;
-		} elseif ($key == 'notes') {
-			return $this->notes;
+		} elseif (in_array($key, ['notes', 'validationErrorMessage'])) {
+			$value = null;
+
+			switch ($key) {
+				case 'notes':
+					$value = $this->notes;
+					break;
+
+				case 'validationErrorMessage':
+					$value = $this->validationErrorMessage;
+					break;
+			}
+
+			return  $value;
 		}
 
 		throw new HtmlElementException("$key attribute not found");
@@ -36,6 +49,11 @@ abstract class FormElement extends HtmlElement
 	public function setNotes(string $notes) : void
 	{
 		$this->notes = $notes;
+	}
+
+	public function setValidationErrorMessage(string $validationErrorMessage) : void
+	{
+		$this->validationErrorMessage = $validationErrorMessage;
 	}
 
 	public function addAttributes(array $attributes) : void

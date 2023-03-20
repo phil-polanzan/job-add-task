@@ -27,26 +27,27 @@ class JobAddForm extends AjaxForm
 			'maxlength' => 50,
 			'required' => true
 		]);
-		$title->setNotes('Please fill out this field.');
+		$title->setValidationErrorMessage('Please fill out this field.');
 
 		$estimatedHours = new NumericInput('estimated_hours', 'Estimated Hours');
 		$estimatedHours->addAttributes([
 			'min' => 0,
 			'step' => 0.5
 		]);
-		$estimatedHours->setNotes('Please set with valid value.');
+		$estimatedHours->setValidationErrorMessage('Please set with valid value.');
+		$estimatedHours->setNotes('Allowed values integers or decimal ending with 0.5 (e.g. 1, 1.5).');
 
 		$entryDate = new DateInput('entry_date', 'Entry Date');
 		$entryDate->addAttributes([
 			'required' => true
 		]);
-		$entryDate->setNotes('Please fill out this field.');
+		$entryDate->setValidationErrorMessage('Please fill out this field.');
 
 		$schedStartDate = new DateInput('schedule_start_date', 'Schedule Start Date');
-		$schedStartDate->setNotes('Start Date cannot be greater than End Date.');
+		$schedStartDate->setValidationErrorMessage('Start Date cannot be greater than End Date.');
 
 		$schedEndDate = new DateInput('schedule_end_date', 'Schedule End Date');
-		$schedEndDate->setNotes('End Date cannot be smaller than Start Date.');
+		$schedEndDate->setValidationErrorMessage('End Date cannot be smaller than Start Date.');
 
 		$button = new SubmitButton('Submit');
 
