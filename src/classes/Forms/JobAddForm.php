@@ -31,7 +31,7 @@ class JobAddForm extends AjaxForm
 		$title = new TextInput('title', 'Title');
 		$title->addAttributes([
 			'maxlength' => $job->title->getLength(),
-			'required' => $job->title->isEmptyValueAllowed()
+			'required' => !$job->title->isEmptyValueAllowed()
 		]);
 		$title->setValidationErrorMessage('Please fill out this field.');
 
@@ -45,7 +45,7 @@ class JobAddForm extends AjaxForm
 
 		$entryDate = new DateInput('entry_date', 'Entry Date');
 		$entryDate->addAttributes([
-			'required' => $job->estimated_hours->isEmptyValueAllowed()
+			'required' => !$job->entry_date->isEmptyValueAllowed()
 		]);
 		$entryDate->setValidationErrorMessage('Please fill out this field.');
 
