@@ -117,4 +117,18 @@ abstract class HtmlElement
 	{
 		return str_replace(' ', '-', strtolower($string));
 	}
+
+	public function getAttributesHtmlString(array $additionalAttributes = []) : string
+	{
+		return $this->formatHtmlAttributesString(array_merge($this->getAttributes(), $additionalAttributes));
+	}
+
+	protected function formatHtmlAttributesString(array $attributes) : string
+	{
+		$mapFn = function ($key, $value) {
+			return "$key=\"$value\"";
+		};
+
+		return implode(' ', array_map($mapFn, array_keys($attributes), array_values($attributes)));
+	}
 }
