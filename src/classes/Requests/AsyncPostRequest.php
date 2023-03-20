@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Requests;
+
+use App\Responses\JsonResponse;
+use App\Responses\Response;
+
+class AsyncPostRequest extends PostRequest
+{
+	private static bool $ignoreExit = false;
+
+	protected function finally() : void
+	{
+		$response = new JsonResponse();
+		$response->setType($this->getRequestOk() ? Response::TYPE_SUCCESS : Response::TYPE_ERROR);
+		$response->setMessage($this->getMessage());
+		$response->printMessage();
+
+		if (!self::$ignoreExit) {
+			die();
+		}
+	}
+
+	public static function setIgnoreExit(bool $value = false) : void
+	{
+		self::$ignoreExit = $value;
+	}
+
+	public static function getIgnoreExit() : bool
+	{
+		return self::$ignoreExit;
+	}
+}

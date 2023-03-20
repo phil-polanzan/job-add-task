@@ -1,9 +1,6 @@
 <?php
 require dirname(__DIR__, 3) . '/bootstrap-app.php';
 
-@header('Content-Type: text/html; charset=utf-8');
-@header('X-Robots-Tag: noindex');
-
 use App\Requests\AsyncPostRequest;
 
 $request = new AsyncPostRequest();
