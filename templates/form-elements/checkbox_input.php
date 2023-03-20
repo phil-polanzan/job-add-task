@@ -1,11 +1,20 @@
 <?php
 $obj = $args['obj'];
+$class = 'form-check-input';
+$additionalAttributes = ['role' => 'switch'];
 
-require 'attributes.php';
-require 'label.php';
+// custom setting for attributes
+$objAttributes = $obj->getAttributes();
+$mapFn = function ($key, $value) {
+	$key = trim($key);
+	$value = trim($value);
+
+	return "$key=\"$value\"";
+};
+$elementAttributes = implode(' ', array_map($mapFn, array_keys($objAttributes), array_values($objAttributes)));
 ?>
-	<input <?php echo $elementAttributes; ?>/>
-<?php if ($obj->validationErrorMessage): ?>
-	<div class="invalid-feedback"><?php echo $obj->validationErrorMessage; ?></div>
-<?php
-endif;
+<label for="<?php echo $obj->name; ?>" class="form-check-label"><?php echo $obj->label; ?></label>
+<?php if ($obj->notes): ?>
+	<br><em><?php echo $obj->notes; ?></em>
+<?php endif; ?>
+<input <?php echo $elementAttributes; ?>/>
