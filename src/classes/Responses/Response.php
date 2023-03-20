@@ -5,14 +5,14 @@ namespace App\Responses;
 abstract class Response
 {
 	const STATUS_ERROR = 'Error';
-	const sTATUS_SUCCESS = 'Success';
+	const STATUS_SUCCESS = 'Success';
 
 	private string $status;
 	private string $message;
 
 	public function setStatus(?string $status) : void
 	{
-		$this->status = $status ?? self::sTATUS_SUCCESS;
+		$this->status = $status ?? self::STATUS_SUCCESS;
 	}
 
 	public function getStatus() : string
