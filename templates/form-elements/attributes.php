@@ -17,4 +17,9 @@ $mapFn = function ($key, $value) {
 	return "$key=\"$value\"";
 };
 
+$required = $objAttributes['required'] ?? false;
+unset($objAttributes['required']);
+
 $elementAttributes = implode(' ', array_map($mapFn, array_keys($objAttributes), array_values($objAttributes)));
+$elementAttributes .= $required ? ' required' : '';
+
