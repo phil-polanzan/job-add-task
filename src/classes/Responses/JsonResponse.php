@@ -7,7 +7,7 @@ class JsonResponse extends Response
 	public function printMessage() : void
 	{
 		echo json_encode([
-			'type' => $this->getStatus(),
+			'status' => $this->getStatus(),
 			'message' => $this->getMessage()
 		]);
 	}
