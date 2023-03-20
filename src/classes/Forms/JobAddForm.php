@@ -58,7 +58,8 @@ class JobAddForm extends AjaxForm
 
 		$button = new SubmitButton('Submit');
 
-		$checkbox = new CheckBox('disable_js_validation', 'Diadble Bootstrap validation');
+		$checkbox = new CheckBox('disable_js_validation', 'Disable Js validation');
+		$checkbox->setNotes('For testing back-end validation');
 
 		$this->setElements([
 			new HiddenInput('controller', 'job_controller'),
@@ -68,7 +69,7 @@ class JobAddForm extends AjaxForm
 			$entryDate,
 			$schedStartDate,
 			$schedEndDate,
-			new CheckBox('disable_js_validation', 'Disable Bootstrap validation'),
+			$checkbox,
 			$button
 		]);
 	}
