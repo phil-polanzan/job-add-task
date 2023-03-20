@@ -1,7 +1,5 @@
 <?php
 $obj = $args['obj'];
-$class = 'form-check-input';
-$additionalAttributes = ['role' => 'switch'];
 
 // custom setting for attributes
 $objAttributes = $obj->getAttributes();
@@ -13,7 +11,7 @@ $mapFn = function ($key, $value) {
 };
 $elementAttributes = implode(' ', array_map($mapFn, array_keys($objAttributes), array_values($objAttributes)));
 ?>
-<label for="<?php echo $obj->name; ?>" class="form-check-label"><?php echo $obj->label; ?></label>
+<label for="<?php echo $obj->name; ?>"><?php echo $obj->label; ?></label>
 <?php if ($obj->notes): ?>
 	<br><em><?php echo $obj->notes; ?></em>
 <?php endif; ?>

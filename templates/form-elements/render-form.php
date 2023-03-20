@@ -8,7 +8,7 @@
 	?>
 	<form <?php echo $elementAttributes; ?> novalidate>
 		<?php foreach ($form->elements as $element): ?>
-			<div class="row <?php echo get_class($element) == 'App\FormElements\CheckBox'? 'form-check form-switch' : ''; ?>">
+			<div class="row">
 				<?php $element->render(); ?>
 			</div>
 		<?php endforeach; ?>
