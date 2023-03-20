@@ -23,23 +23,9 @@ require ROOT_PATH . '/templates/inc/head.php';
 				foreach ($form->getAlerts() as $alert) {
 					require ROOT_PATH . "/$alert";
 				}
+
+				require ROOT_PATH . "/templates/form-elements/render-form.php";
 				?>
-				<div class="row form-wrapper">
-					<?php
-					$mapFn = function ($key, $value) {
-						return "$key=\"$value\"";
-					};
-					$formAttributes = $form->getAttributes();
-					$elementAttributes = implode(' ', array_map($mapFn, array_keys($formAttributes), array_values($formAttributes)));
-					?>
-					<form <?php echo $elementAttributes; ?> novalidate>
-						<?php foreach ($form->elements as $element): ?>
-							<div class="row">
-								<?php $element->render(); ?>
-							</div>
-						<?php endforeach; ?>
-					</form>
-				</div>
 			</div>
 		</div>
 	</main>
