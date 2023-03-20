@@ -70,11 +70,11 @@ class Form extends HtmlElement
 	public function getJsFiles() : array
 	{
 		return [
-			'lib/js/vendor/jquery/jquery-3.6.4.min.js',
-			'lib/js/vendor/popper/popper.min.js',
-			'lib/js/vendor/bootstrap/bootstrap.min.js',
-			'lib/js/vendor/bootstrap/bootstrap-datepicker.min.js',
-			'lib/js/vendor/summernote/summernote.min.js',
+			['name' => 'lib/js/vendor/jquery/jquery-3.6.4.min.js'],
+			['name' => 'lib/js/vendor/popper/popper.min.js'],
+			['name' => 'lib/js/vendor/bootstrap/bootstrap.min.js'],
+			['name' => 'lib/js/vendor/bootstrap/bootstrap-datepicker.min.js'],
+			['name' => 'lib/js/vendor/summernote/summernote.min.js'],
 		];
 	}
 }

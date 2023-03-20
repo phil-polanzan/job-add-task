@@ -68,4 +68,17 @@ class JobAddForm extends AjaxForm
 			$button
 		]);
 	}
+
+
+	public function getJsFiles() : array
+	{
+		return array_merge(
+			parent::getJsFiles(),
+			[[
+				'name' => 'lib/js/app/classes/form.js',
+				'is_module' => true
+			]]
+		);
+	}
+
 }
