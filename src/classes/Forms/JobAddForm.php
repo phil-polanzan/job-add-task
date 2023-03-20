@@ -55,7 +55,7 @@ class JobAddForm extends AjaxForm
 			new HtmlTextarea('description', 'Description'),
 			$estimatedHours,
 			$entryDate,
-			$schedEndDate,
+			$schedStartDate,
 			$schedEndDate,
 			$button
 		]);
