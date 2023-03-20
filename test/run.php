@@ -1,9 +1,9 @@
 <?php
+include dirname(__DIR__) . '/bootstrap-app.php';
+
 if (!IS_CLI) {
 	exit;
 }
-
-include dirname(__DIR__) . '/bootstrap-app.php';
 
 use App\Terminal\Messenger;
 use App\Exceptions\AppException;
