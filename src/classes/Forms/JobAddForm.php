@@ -20,7 +20,7 @@ class JobAddForm extends AjaxForm
 		$this->JobElements();
 	}
 
-	public function JobElements(array $elements)
+	public function JobElements() : void
 	{
 		$title = new TextInput('title', 'Title');
 		$title->addAttributes([
@@ -36,7 +36,7 @@ class JobAddForm extends AjaxForm
 		]);
 		$estimatedHours->setNotes('Please set with valid value.');
 
-		$entryDate = new DateInput('estimated_hours', 'Estimated Hours');
+		$entryDate = new DateInput('entry_date', 'Entry Date');
 		$entryDate->addAttributes([
 			'required' => true
 		]);
@@ -60,5 +60,4 @@ class JobAddForm extends AjaxForm
 			$button
 		]);
 	}
-
 }

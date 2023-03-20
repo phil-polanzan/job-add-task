@@ -8,15 +8,16 @@ abstract class HtmlElement
 {
 
 	private string $label;
-	private array $attributeKeys = ['class'];
+	private array $attributeKeys = ['class', 'id'];
 	private ?string $templateFile = null;
 	private array $attributes = [];
 
 	public function __construct(string $label)
 	{
 		$this->label = trim($label);
-		$this->addAttributes([
-			'class' => ''
+		$this->setAttributes([
+			'class' => '',
+			'id' => ''
 		]);
 	}
 
@@ -43,20 +44,10 @@ abstract class HtmlElement
 	public function addAttributes(array $attributes) : void
 	{
 		foreach ($attributes as $key => $value) {
-			$key = strtolower($key);
-
-			if (in_array($key, $this->attributeKeys)) {
-				continue;
-			}
-
-			$value ??= trim($value);
-
-			if (!empty($value)) {
-				$attributes[strtolower($key)] = $value;
-			}
+			$attributes[strtolower($key)] = is_null($value) ? '' : trim($value);
 		}
 
-		$this->setAttributes(array_merge($this->attributes, $attributes));
+		$this->attributes = array_merge($this->attributes, $attributes);
 	}
 
 	public function getAttribute($key)

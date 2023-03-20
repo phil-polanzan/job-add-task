@@ -8,12 +8,12 @@ use App\Html\HtmlElement;
 
 abstract class FormElement extends HtmlElement
 {
-	private string $notes;
+	private string $notes = '';
 
 	public function __construct(string $name, ?string $label)
 	{
 		parent::__construct($label ?? $name);
-		$this->addAttributeKeys(['name', 'id', 'required', 'class']);
+		$this->addAttributeKeys(['name', 'required']);
 		$this->addAttributes(['name' => $name]);
 	}
 
@@ -43,7 +43,7 @@ abstract class FormElement extends HtmlElement
 		parent::addAttributes($attributes);
 
 		if (!isset($attributes['id'])) {
-			$attributes['id'] = $attributes['name'];
+			$attributes['id'] = $this->getAttribute('name');
 		}
 
 		$attributes['required'] ??= false;
