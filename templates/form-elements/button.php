@@ -3,4 +3,4 @@ $obj = $args['obj'];
 
 require 'attributes.php';
 ?>
-<button <?php echo $elementAttributes; ?>><?php $obj->label; ?>></button>
+<button <?php echo $elementAttributes; ?>><?php echo $obj->label; ?></button>
