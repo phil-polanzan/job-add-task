@@ -80,6 +80,8 @@ abstract class HtmlElement
 
 			return  $value;
 		}
+
+		return null;
 	}
 
 	public function __set(string $key, $value) : void
