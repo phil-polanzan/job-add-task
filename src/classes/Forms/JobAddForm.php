@@ -2,6 +2,7 @@
 
 namespace App\Forms;
 
+use App\FormElements\CheckBox;
 use App\FormElements\DateInput;
 use App\FormElements\HiddenInput;
 use App\FormElements\HtmlTextarea;
@@ -57,6 +58,8 @@ class JobAddForm extends AjaxForm
 
 		$button = new SubmitButton('Submit');
 
+		$checkbox = new CheckBox('disable_js_validation', 'Diadble Bootstrap validation');
+
 		$this->setElements([
 			new HiddenInput('controller', 'job_controller'),
 			$title,
@@ -65,6 +68,7 @@ class JobAddForm extends AjaxForm
 			$entryDate,
 			$schedStartDate,
 			$schedEndDate,
+			new CheckBox('disable_js_validation', 'Disable Bootstrap validation'),
 			$button
 		]);
 	}
