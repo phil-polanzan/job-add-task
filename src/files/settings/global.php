@@ -3,8 +3,6 @@
  * In this file global constants are defined
  */
 
-use App\Exceptions\ConfigException;
-
 $rootPath = dirname(__DIR__, 3);
 define('ROOT_PATH', $rootPath);
 
