@@ -8,3 +8,4 @@ class ModelPropertyExceptionNotFound extends AppException
 		parent::__construct($message, 'ModelProperty');
 	}
 }
+

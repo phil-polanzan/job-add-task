@@ -10,3 +10,4 @@ class ModelPropertyException extends AppException
 		parent::__construct(get_class($property) . " {$property->getName()}: $message", 'ModelProperty');
 	}
 }
+
