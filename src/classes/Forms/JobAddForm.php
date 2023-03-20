@@ -3,6 +3,7 @@
 namespace App\Forms;
 
 use App\FormElements\DateInput;
+use App\FormElements\HiddenInput;
 use App\FormElements\HtmlTextarea;
 use App\FormElements\NumericInput;
 use App\FormElements\SubmitButton;
@@ -57,6 +58,7 @@ class JobAddForm extends AjaxForm
 		$button = new SubmitButton('Submit');
 
 		$this->setElements([
+			new HiddenInput('controller', 'job_controller'),
 			$title,
 			new HtmlTextarea('description', 'Description'),
 			$estimatedHours,

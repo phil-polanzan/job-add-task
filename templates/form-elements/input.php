@@ -9,5 +9,3 @@ require 'label.php';
 	<div class="invalid-feedback"><?php echo $obj->validationErrorMessage; ?></div>
 <?php
 endif;
-
-
