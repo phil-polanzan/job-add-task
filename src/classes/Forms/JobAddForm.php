@@ -75,7 +75,7 @@ class JobAddForm extends AjaxForm
 		return array_merge(
 			parent::getJsFiles(),
 			[[
-				'name' => 'lib/js/app/classes/form.js',
+				'name' => 'lib/js/app/form.js',
 				'is_module' => true
 			]]
 		);
