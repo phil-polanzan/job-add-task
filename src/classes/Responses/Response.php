@@ -4,20 +4,20 @@ namespace App\Responses;
 
 abstract class Response
 {
-	const TYPE_ERROR = 'Error';
-	const TYPE_SUCCESS = 'Success';
+	const STATUS_ERROR = 'Error';
+	const sTATUS_SUCCESS = 'Success';
 
-	private string $type;
+	private string $status;
 	private string $message;
 
-	public function setType(?string $type) : void
+	public function setStatus(?string $status) : void
 	{
-		$this->type = $type ?? self::TYPE_SUCCESS;
+		$this->status = $status ?? self::sTATUS_SUCCESS;
 	}
 
-	public function getType() : string
+	public function getStatus() : string
 	{
-		return $this->type;
+		return $this->status;
 	}
 
 	public function setMessage(string $message) : void
@@ -27,7 +27,7 @@ abstract class Response
 
 	public function getMessage() : string
 	{
-		return "{$this->type} : {$this->message}";
+		return "{$this->status} : {$this->message}";
 	}
 
 	abstract public function printMessage() : void;

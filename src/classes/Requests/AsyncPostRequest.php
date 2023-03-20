@@ -12,7 +12,7 @@ class AsyncPostRequest extends PostRequest
 	protected function finally() : void
 	{
 		$response = new JsonResponse();
-		$response->setType($this->getRequestOk() ? Response::TYPE_SUCCESS : Response::TYPE_ERROR);
+		$response->setStatus($this->getRequestOk() ? Response::sTATUS_SUCCESS : Response::STATUS_ERROR);
 		$response->setMessage($this->getMessage());
 		$response->printMessage();
 
