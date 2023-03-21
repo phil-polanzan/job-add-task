@@ -8,28 +8,23 @@ use App\ModelProperties\Property;
 
 class Model
 {
-	private array $properties;
-
-	public function __get(string $key) : Property
-	{
-		return $this->get($key);
-	}
-
-	public function set(Property $property) : void
-	{
-		$this->properties[$property->getName()] = $property;
-	}
+	private array $properties = [];
 
 	/**
 	 * @throws ModelPropertyExceptionNotFound
 	 */
-	private function get(string $key) : Property
+	public function __get(string $key) : Property
 	{
 		if (!$prop = $this->properties[$key]) {
 			throw new ModelPropertyExceptionNotFound("$key not found");
 		}
 
 		return $prop;
+	}
+
+	public function __set(string $key, Property $property) : void
+	{
+		$this->properties[$property->getName()] = $property;
 	}
 
 	public function setProperties(array $properties) : void
@@ -39,7 +34,7 @@ class Model
 				throw new ModelException("Error on setting properties");
 			}
 
-			$this->set($property);
+			$this->{$property->getName()} = $property;
 		}
 	}
 
