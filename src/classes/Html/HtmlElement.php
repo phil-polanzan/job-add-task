@@ -120,7 +120,7 @@ abstract class HtmlElement
 
 	public function getAttributesHtmlString(array $additionalAttributes = []) : string
 	{
-		return $this->formatHtmlAttributesString(array_merge($this->getAttributes(), $additionalAttributes));
+		return $this->formatHtmlAttributesString(array_merge($this->attributes, $additionalAttributes));
 	}
 
 	protected function formatHtmlAttributesString(array $attributes) : string
