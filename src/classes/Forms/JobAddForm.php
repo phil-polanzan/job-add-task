@@ -26,25 +26,26 @@ class JobAddForm extends AjaxForm
 	public function JobElements() : void
 	{
 		$job = new Job();
+		$jobProperties = (object)$job->getProperties();
 
 		$title = new TextInput('title', 'Title');
 		$title->addAttributes([
-			'maxlength' => $job->title->getLength(),
-			'required' => !$job->title->isEmptyValueAllowed()
+			'maxlength' => $jobProperties->title->getLength(),
+			'required' => !$jobProperties->title->isEmptyValueAllowed()
 		]);
 		$title->setValidationErrorMessage('Please fill out this field.');
 
 		$estimatedHours = new NumericInput('estimated_hours', 'Estimated Hours');
 		$estimatedHours->addAttributes([
-			'min' => $job->estimated_hours->getMinValue(),
-			'step' => $job->estimated_hours->getStep()
+			'min' => $jobProperties->estimated_hours->getMinValue(),
+			'step' => $jobProperties->estimated_hours->getStep()
 		]);
 		$estimatedHours->setValidationErrorMessage('Please set with valid value.');
 		$estimatedHours->setNotes('Allowed values integers or decimal ending with 0.5 (e.g. 1, 1.5).');
 
 		$entryDate = new DateInput('entry_date', 'Entry Date');
 		$entryDate->addAttributes([
-			'required' => !$job->entry_date->isEmptyValueAllowed()
+			'required' => !$jobProperties->entry_date->isEmptyValueAllowed()
 		]);
 		$entryDate->setValidationErrorMessage('Please fill out this field.');
 
@@ -71,7 +72,6 @@ class JobAddForm extends AjaxForm
 			$button
 		]);
 	}
-
 
 	public function getJsFiles() : array
 	{
