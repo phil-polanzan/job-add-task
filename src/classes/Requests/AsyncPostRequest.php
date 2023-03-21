@@ -14,7 +14,7 @@ class AsyncPostRequest extends PostRequest
 		$response = new JsonResponse();
 		$response->setStatus($this->getRequestOk() ? Response::STATUS_SUCCESS : Response::STATUS_ERROR);
 		$response->setMessage($this->getMessage());
-		$response->printMessage();
+		$response->printData();
 
 		if (!self::$ignoreExit) {
 			die();

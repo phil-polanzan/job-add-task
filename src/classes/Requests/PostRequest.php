@@ -4,6 +4,7 @@ namespace App\Requests;
 
 use App\Exceptions\ClassNotFoundException;
 use App\Factories\ControllerFactory;
+use App\Responses\Response;
 use Exception;
 
 abstract class PostRequest
@@ -40,5 +41,10 @@ abstract class PostRequest
 		return $this->message;
 	}
 
-	protected abstract function finally() : void;
+	protected function finally() : array
+	{
+		$response = new Response();
+
+		return $response->getData();
+	}
 }
