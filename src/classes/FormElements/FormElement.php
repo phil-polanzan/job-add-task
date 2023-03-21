@@ -34,9 +34,13 @@ abstract class FormElement extends HtmlElement
 
 	protected function getClassProperty(string $key)
 	{
-		$value = null;
+		$value = parent::__get($key);
 
-		if (in_array($key, ['notes', 'validationErrorMessage'])) {
+		if (!is_null($value)) {
+			return $value;
+		} elseif (in_array($key, ['notes', 'validationErrorMessage'])) {
+			$value = null;
+
 			switch ($key) {
 				case 'notes':
 					$value = $this->notes;
