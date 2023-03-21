@@ -8,7 +8,7 @@ $cssFiles ??= [];
 $jsFiles ??= [];
 $isAdminForm = true;
 
-$form = new JobAddForm('Add New Job', 'src/files/requests/ajax-post.php');
+$form = new JobAddForm('Add New Job');
 
 require ROOT_PATH . '/templates/inc/head.php';
 ?>
