@@ -21,40 +21,6 @@ abstract class HtmlElement
 		]);
 	}
 
-	protected function setAttributes(array $attributes) : void
-	{
-		$this->attributes = $attributes;
-	}
-
-	public function getAttributes() : array
-	{
-		return $this->attributes;
-	}
-
-	protected function getAttributeKeys() : array
-	{
-		return $this->attributeKeys;
-	}
-
-	protected function addAttributeKeys(array $keys) : void
-	{
-		$this->attributeKeys = array_unique(array_merge($this->attributeKeys, $keys));
-	}
-
-	public function addAttributes(array $attributes) : void
-	{
-		foreach ($attributes as $key => $value) {
-			$attributes[strtolower($key)] = is_null($value) ? '' : trim($value);
-		}
-
-		$this->attributes = array_merge($this->attributes, $attributes);
-	}
-
-	public function getAttribute($key)
-	{
-		return $this->attributes[$key] ?? null;
-	}
-
 	public function __get(string $key)
 	{
 		$value = $this->getAttribute($key);
@@ -91,6 +57,40 @@ abstract class HtmlElement
 		}
 
 		throw new HtmlElementException("$key attribute not found");
+	}
+
+	protected function setAttributes(array $attributes) : void
+	{
+		$this->attributes = $attributes;
+	}
+
+	public function getAttributes() : array
+	{
+		return $this->attributes;
+	}
+
+	public function addAttributes(array $attributes) : void
+	{
+		foreach ($attributes as $key => $value) {
+			$attributes[strtolower($key)] = is_null($value) ? '' : trim($value);
+		}
+
+		$this->attributes = array_merge($this->attributes, $attributes);
+	}
+
+	public function getAttribute($key)
+	{
+		return $this->attributes[$key] ?? null;
+	}
+
+	protected function getAttributeKeys() : array
+	{
+		return $this->attributeKeys;
+	}
+
+	protected function addAttributeKeys(array $keys) : void
+	{
+		$this->attributeKeys = array_unique(array_merge($this->attributeKeys, $keys));
 	}
 
 	/**
