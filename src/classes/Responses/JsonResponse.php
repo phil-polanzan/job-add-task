@@ -4,11 +4,8 @@ namespace App\Responses;
 
 class JsonResponse extends Response
 {
-	public function printMessage() : void
+	public function printData() : void
 	{
-		echo json_encode([
-			'status' => $this->getStatus(),
-			'message' => $this->getMessage()
-		]);
+		echo json_encode($this->getData());
 	}
 }

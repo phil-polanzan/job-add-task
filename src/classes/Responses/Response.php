@@ -30,8 +30,16 @@ class Response
 		return $this->message;
 	}
 
-	public function printMessage() : void
+	public function printData() : void
 	{
 		echo "{$this->status} : {$this->message}";
+	}
+
+	public function getData() : array
+	{
+		return [
+			'status' => $this->getStatus(),
+			'message' => $this->getMessage()
+		];
 	}
 }
