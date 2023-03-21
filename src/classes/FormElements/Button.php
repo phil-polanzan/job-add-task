@@ -14,6 +14,6 @@ class Button extends HtmlElement
 			'type' => $type,
 			'class' => 'btn btn-primary'
 		]);
-		$this->setTemplateFile('button.php');
+		$this->templateFile = 'button.php';
 	}
 }

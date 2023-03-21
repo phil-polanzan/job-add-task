@@ -8,6 +8,6 @@ class HiddenInput extends Input
 	{
 		parent::__construct($name, 'hidden', null, $value);
 		$this->addAttributeKeys(['type', 'value']);
-		$this->setTemplateFile('hidden_input.php');
+		$this->templateFile = 'hidden_input.php';
 	}
 }

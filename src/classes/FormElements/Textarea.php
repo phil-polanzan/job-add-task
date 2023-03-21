@@ -11,6 +11,6 @@ class Textarea extends FormElement
 		$this->addAttributes([
 			'value' => $value
 		]);
-		$this->setTemplateFile('textarea.php');
+		$this->templateFile = 'textarea.php';
 	}
 }

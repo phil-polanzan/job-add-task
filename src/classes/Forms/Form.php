@@ -60,7 +60,7 @@ class Form extends HtmlElement
 			$attributes['id'] = self::formatString((trim($this->label)));
 		}
 
-		$this->setAttributes(array_merge($this->attributes, $attributes));
+		$this->attributes = array_merge($this->attributes, $attributes);
 	}
 
 	public function getCssFiles() : array

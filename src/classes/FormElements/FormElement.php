@@ -57,7 +57,7 @@ abstract class FormElement extends HtmlElement
 
 		$attributes['required'] ??= false;
 		$attributes['required'] = (bool)$attributes['required'];
-		$this->setAttributes(array_merge($this->attributes, $attributes));
+		$this->attributes = array_merge($this->attributes, $attributes);
 	}
 
 	public function getAttributesHtmlString(array $additionalAttributes = []) : string

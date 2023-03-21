@@ -8,6 +8,6 @@ class DateInput extends Input
 	{
 		parent::__construct($name, 'text', $label, $value);
 		$this->addAttributeKeys(['data-date-format']);
-		$this->setTemplateFile('date_input.php');
+		$this->templateFile = 'date_input.php';
 	}
 }

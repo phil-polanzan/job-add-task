@@ -12,6 +12,6 @@ abstract class Input extends FormElement
 			'type' => $type,
 			'value' => $value
 		]);
-		$this->setTemplateFile('input.php');
+		$this->templateFile = 'input.php';
 	}
 }

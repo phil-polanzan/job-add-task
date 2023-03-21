@@ -15,15 +15,17 @@ abstract class HtmlElement
 	public function __construct(string $label)
 	{
 		$this->label = trim($label);
-		$this->setAttributes([
+		$this->attributes = [
 			'class' => '',
 			'id' => ''
-		]);
+		];
 	}
 
 	public function __get(string $key)
 	{
-		$value = $this->getAttribute($key);
+		// todo check if either attribute of property exists
+
+		$value = $this->attributes[$key] ?? null;
 
 		if (in_array($key, $this->attributeKeys) && !is_null($value)) {
 			return $value;
@@ -38,9 +40,17 @@ abstract class HtmlElement
 	{
 		if (in_array($key, $this->attributeKeys)) {
 			$this->addAttributes([$key => $value]);
-		}
+		} elseif (in_array($key,  ['templateFile', 'attributes'])) {
+			switch ($key) {
+				case 'attributes':
+					$this->attributes = $value;
+					break;
 
-		throw new HtmlElementException("$key attribute not found");
+				case 'templateFile':
+					$this->templateFile = $value;
+					break;
+			}
+		}
 	}
 
 	protected function getPropertyValue(string $key)
@@ -56,6 +66,10 @@ abstract class HtmlElement
 
 			case 'attributeKeys':
 				$value = $this->attributeKeys;
+				break;
+
+			case 'templateFile':
+				$value = $this->templateFile;
 				break;
 
 			default:
@@ -79,11 +93,6 @@ abstract class HtmlElement
 		$this->attributes = array_merge($this->attributes, $attributes);
 	}
 
-	public function getAttribute($key)
-	{
-		return $this->attributes[$key] ?? null;
-	}
-
 	protected function addAttributeKeys(array $keys) : void
 	{
 		$this->attributeKeys = array_unique(array_merge($this->attributeKeys, $keys));
@@ -102,11 +111,6 @@ abstract class HtmlElement
 
 		$args = ['obj' => $this];
 		require $file;
-	}
-
-	protected function setTemplateFile(string $file) : void
-	{
-		$this->templateFile = $file;
 	}
 
 	public static function formatString(string $string) : string
