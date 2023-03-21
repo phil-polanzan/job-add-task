@@ -27,17 +27,6 @@ abstract class FormElement extends HtmlElement
 
 		if (!is_null($value)) {
 			return $value;
-		}
-
-		throw new HtmlElementException("$key attribute not found");
-	}
-
-	protected function getClassProperty(string $key)
-	{
-		$value = parent::__get($key);
-
-		if (!is_null($value)) {
-			return $value;
 		} elseif (in_array($key, ['notes', 'validationErrorMessage'])) {
 			$value = null;
 
@@ -50,9 +39,11 @@ abstract class FormElement extends HtmlElement
 					$value = $this->validationErrorMessage;
 					break;
 			}
+
+			return  $value;
 		}
 
-		return $value;
+		throw new HtmlElementException("$key attribute not found");
 	}
 
 	public function setNotes(string $notes) : void
