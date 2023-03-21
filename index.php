@@ -2,7 +2,7 @@
 require 'bootstrap-app.php';
 
 extract([
-	'formType' => 'job-add',
+	'formType' => 'job-add-form',
 	'objArgs' => ['Add New Job', null]
 ]);
 

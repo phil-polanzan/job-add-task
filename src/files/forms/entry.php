@@ -1,6 +1,6 @@
 <?php
 
-use App\Forms\FormFactory;
+use App\Factories\FormFactory;
 
 require ROOT_PATH . '/templates/inc/open.html';
 
