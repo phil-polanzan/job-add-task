@@ -13,9 +13,10 @@ use App\Models\Job;
 
 class JobAddForm extends AjaxForm
 {
-	public function __construct(string $label)
+	public function __construct(string $label, ?string $action = null)
 	{
-		parent::__construct($label, 'src/files/requests/ajax-post.php', self::METHOD_POST);
+		$action ??= 'src/files/requests/ajax-post.php';
+		parent::__construct($label, $action, self::METHOD_POST);
 		$this->addAttributes([
 			'id' => 'job-add',
 			'class' => 'app-form model-form'
