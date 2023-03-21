@@ -79,11 +79,6 @@ abstract class HtmlElement
 		return $value;
 	}
 
-	protected function setAttributes(array $attributes) : void
-	{
-		$this->attributes = $attributes;
-	}
-
 	public function addAttributes(array $attributes) : void
 	{
 		foreach ($attributes as $key => $value) {
