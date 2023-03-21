@@ -49,15 +49,13 @@ abstract class FormElement extends HtmlElement
 
 	public function addAttributes(array $attributes) : void
 	{
-		parent::addAttributes($attributes);
-
 		if (!isset($attributes['id'])) {
 			$attributes['id'] = $this->name;
 		}
 
 		$attributes['required'] ??= false;
 		$attributes['required'] = (bool)$attributes['required'];
-		$this->attributes = array_merge($this->attributes, $attributes);
+		parent::addAttributes($attributes);
 	}
 
 	public function getAttributesHtmlString(array $additionalAttributes = []) : string

@@ -54,13 +54,11 @@ class Form extends HtmlElement
 
 	public function addAttributes(array $attributes) : void
 	{
-		parent::addAttributes($attributes);
-
 		if (!isset($attributes['id'])) {
 			$attributes['id'] = self::formatString((trim($this->label)));
 		}
 
-		$this->attributes = array_merge($this->attributes, $attributes);
+		parent::addAttributes($attributes);
 	}
 
 	public function getCssFiles() : array

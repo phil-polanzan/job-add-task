@@ -10,15 +10,14 @@ abstract class HtmlElement
 	private string $label;
 	private array $attributeKeys = ['class', 'id'];
 	private ?string $templateFile = null;
-	private array $attributes = [];
+	private array $attributes = [
+		'class' => '',
+		'id' => ''
+	];
 
 	public function __construct(string $label)
 	{
 		$this->label = trim($label);
-		$this->attributes = [
-			'class' => '',
-			'id' => ''
-		];
 	}
 
 	public function __get(string $key)
@@ -85,7 +84,16 @@ abstract class HtmlElement
 			$attributes[strtolower($key)] = is_null($value) ? '' : trim($value);
 		}
 
+		$debugPrint = function($a) {
+			echo '<pre>';
+			print_r($a);
+			echo '</pre>';
+		};
+
+		$debugPrint($this->attributes);
 		$this->attributes = array_merge($this->attributes, $attributes);
+		$debugPrint($this->attributes);
+		echo '------------------';
 	}
 
 	protected function addAttributeKeys(array $keys) : void
