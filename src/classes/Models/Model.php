@@ -10,6 +10,11 @@ class Model
 {
 	private array $properties;
 
+	public function __get(string $key) : Property
+	{
+		return $this->get($key);
+	}
+
 	public function set(Property $property) : void
 	{
 		$this->properties[$property->getName()] = $property;
@@ -25,11 +30,6 @@ class Model
 		}
 
 		return $prop;
-	}
-
-	public function __get(string $key) : Property
-	{
-		return $this->get($key);
 	}
 
 	public function setProperties(array $properties) : void
