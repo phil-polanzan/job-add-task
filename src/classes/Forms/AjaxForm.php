@@ -4,11 +4,9 @@ namespace App\Forms;
 
 class AjaxForm extends Form
 {
-	public function getAlerts() : array
+	public function __construct(string $label, string $action, ?string $method = null)
 	{
-		return [
-			'templates/inc/form-success-alert.php',
-			'templates/inc/form-danger-alert.html'
-		];
+		parent::__construct($label, $action, $method);
+		$this->templateFile = 'form.php';
 	}
 }
