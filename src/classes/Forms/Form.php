@@ -16,11 +16,24 @@ class Form extends HtmlElement
 	public function __construct(string $label, string $action, ?string $method = null)
 	{
 		parent::__construct($label);
-		$this->addAttributeKeys(['method', 'action']);
+		$this->addAttributeKeys(['method', 'action', 'data-form-class']);
 		$this->addAttributes([
 			'method' => $method ?? self::METHOD_GET,
-			'action' => ROOT_URL . "/$action"
+			'action' => ROOT_URL . "/$action",
+			'data-form-tag' => $this->getFormTagAttribute()
 		]);
+	}
+
+	private function getFormTagAttribute() : string
+	{
+		return implode(
+			'-', array_map(
+				'strtolower', array_filter(
+					preg_split('/(?=[A-Z])/', end(explode('\\', get_class($this)))
+					)
+				)
+			)
+		);
 	}
 
 	protected function getPropertyValue(string $key)
