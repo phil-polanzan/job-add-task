@@ -1,5 +1,5 @@
 <?php
-$objAttributes = $obj->getAttributes();
+$objAttributes = $obj->attributes;
 $objAttributes['class'] .= ' form-control';
 
 if (isset($class)) {
