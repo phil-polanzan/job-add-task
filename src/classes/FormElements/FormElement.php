@@ -18,18 +18,11 @@ abstract class FormElement extends HtmlElement
 		$this->addAttributes(['name' => $name]);
 	}
 
-	/**
-	 * @throws HtmlElementException
-	 */
-	public function __get(string $key)
+	protected function getClassProperty(string $key)
 	{
-		$value = parent::__get($key);
+		$value = null;
 
-		if (!is_null($value)) {
-			return $value;
-		} elseif (in_array($key, ['notes', 'validationErrorMessage'])) {
-			$value = null;
-
+		if (in_array($key, ['notes', 'validationErrorMessage'])) {
 			switch ($key) {
 				case 'notes':
 					$value = $this->notes;
@@ -39,8 +32,20 @@ abstract class FormElement extends HtmlElement
 					$value = $this->validationErrorMessage;
 					break;
 			}
+		}
 
-			return  $value;
+		return $value;
+	}
+
+	/**
+	 * @throws HtmlElementException
+	 */
+	public function __get(string $key)
+	{
+		$value = parent::__get($key);
+
+		if (!is_null($value)) {
+			return $value;
 		}
 
 		throw new HtmlElementException("$key attribute not found");

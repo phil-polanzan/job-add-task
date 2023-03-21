@@ -23,33 +23,14 @@ abstract class HtmlElement
 
 	public function __get(string $key)
 	{
-		$value = $this->getAttribute($key);
+		$value = $this->getAttribute($key) ?? null;
 
-		if (in_array($key, $this->getAttributeKeys()) && !is_null($value)) {
-			return $value;
-		} elseif (in_array($key, ['label', 'attributes', 'attributeKeys'])) {
-			$value = null;
-
-			switch ($key) {
-				case 'label':
-					$value = $this->label;
-					break;
-
-				case 'attributes':
-					$value = $this->attributes;
-					break;
-
-				case 'attributeKeys':
-					$value = $this->attributeKeys;
-					break;
-			}
-
-			return  $value;
-		}
-
-		return null;
+		return !is_null($value) ? $value : $this->getClassProperty($key);
 	}
 
+	/**
+	 * @throws HtmlElementException
+	 */
 	public function __set(string $key, $value) : void
 	{
 		if (in_array($key, $this->getAttributeKeys())) {
@@ -69,6 +50,16 @@ abstract class HtmlElement
 		return $this->attributes;
 	}
 
+	protected function getAttributeKeys() : array
+	{
+		return $this->attributeKeys;
+	}
+
+	protected function addAttributeKeys(array $keys) : void
+	{
+		$this->attributeKeys = array_unique(array_merge($this->attributeKeys, $keys));
+	}
+
 	public function addAttributes(array $attributes) : void
 	{
 		foreach ($attributes as $key => $value) {
@@ -83,14 +74,27 @@ abstract class HtmlElement
 		return $this->attributes[$key] ?? null;
 	}
 
-	protected function getAttributeKeys() : array
+	protected function getClassProperty(string $key)
 	{
-		return $this->attributeKeys;
-	}
+		$value = null;
 
-	protected function addAttributeKeys(array $keys) : void
-	{
-		$this->attributeKeys = array_unique(array_merge($this->attributeKeys, $keys));
+		if (in_array($key, ['label', 'attributes', 'attributeKeys'])) {
+			switch ($key) {
+				case 'label':
+					$value = $this->label;
+					break;
+
+				case 'attributes':
+					$value = $this->attributes;
+					break;
+
+				case 'attributeKeys':
+					$value = $this->attributeKeys;
+					break;
+			}
+		}
+
+		return $value;
 	}
 
 	/**
