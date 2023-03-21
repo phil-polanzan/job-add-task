@@ -18,6 +18,20 @@ abstract class FormElement extends HtmlElement
 		$this->addAttributes(['name' => $name]);
 	}
 
+	/**
+	 * @throws HtmlElementException
+	 */
+	public function __get(string $key)
+	{
+		$value = parent::__get($key);
+
+		if (!is_null($value)) {
+			return $value;
+		}
+
+		throw new HtmlElementException("$key attribute not found");
+	}
+
 	protected function getClassProperty(string $key)
 	{
 		$value = null;
@@ -35,20 +49,6 @@ abstract class FormElement extends HtmlElement
 		}
 
 		return $value;
-	}
-
-	/**
-	 * @throws HtmlElementException
-	 */
-	public function __get(string $key)
-	{
-		$value = parent::__get($key);
-
-		if (!is_null($value)) {
-			return $value;
-		}
-
-		throw new HtmlElementException("$key attribute not found");
 	}
 
 	public function setNotes(string $notes) : void
