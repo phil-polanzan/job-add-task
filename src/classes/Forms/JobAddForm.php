@@ -83,5 +83,4 @@ class JobAddForm extends AjaxForm
 			]]
 		);
 	}
-
 }
