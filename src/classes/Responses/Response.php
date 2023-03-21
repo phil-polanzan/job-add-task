@@ -2,7 +2,7 @@
 
 namespace App\Responses;
 
-abstract class Response
+class Response
 {
 	const STATUS_ERROR = 'Error';
 	const STATUS_SUCCESS = 'Success';
@@ -27,8 +27,11 @@ abstract class Response
 
 	public function getMessage() : string
 	{
-		return "{$this->status} : {$this->message}";
+		return $this->message;
 	}
 
-	abstract public function printMessage() : void;
+	public function printMessage() : void
+	{
+		echo "{$this->status} : {$this->message}";
+	}
 }
