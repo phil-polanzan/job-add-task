@@ -9,7 +9,7 @@ class AsyncPostRequest extends PostRequest
 {
 	private static bool $ignoreExit = false;
 
-	protected function finally() : void
+	protected function finally()
 	{
 		$response = new JsonResponse();
 		$response->setStatus($this->getRequestOk() ? Response::STATUS_SUCCESS : Response::STATUS_ERROR);
