@@ -84,16 +84,7 @@ abstract class HtmlElement
 			$attributes[strtolower($key)] = is_null($value) ? '' : trim($value);
 		}
 
-		$debugPrint = function($a) {
-			echo '<pre>';
-			print_r($a);
-			echo '</pre>';
-		};
-
-		$debugPrint($this->attributes);
 		$this->attributes = array_merge($this->attributes, $attributes);
-		$debugPrint($this->attributes);
-		echo '------------------';
 	}
 
 	protected function addAttributeKeys(array $keys) : void
