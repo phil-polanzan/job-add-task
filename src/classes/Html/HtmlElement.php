@@ -25,7 +25,7 @@ abstract class HtmlElement
 	{
 		$value = $this->getAttribute($key);
 
-		if (in_array($key, $this->getAttributeKeys()) && !is_null($value)) {
+		if (in_array($key, $this->attributeKeys) && !is_null($value)) {
 			return $value;
 		} elseif (in_array($key, ['label', 'attributes', 'attributeKeys'])) {
 			$value = null;
@@ -52,7 +52,7 @@ abstract class HtmlElement
 
 	public function __set(string $key, $value) : void
 	{
-		if (in_array($key, $this->getAttributeKeys())) {
+		if (in_array($key, $this->attributeKeys)) {
 			$this->addAttributes([$key => $value]);
 		}
 
@@ -76,11 +76,6 @@ abstract class HtmlElement
 	public function getAttribute($key)
 	{
 		return $this->attributes[$key] ?? null;
-	}
-
-	protected function getAttributeKeys() : array
-	{
-		return $this->attributeKeys;
 	}
 
 	protected function addAttributeKeys(array $keys) : void
