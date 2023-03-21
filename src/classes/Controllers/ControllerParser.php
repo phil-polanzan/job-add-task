@@ -2,12 +2,12 @@
 
 namespace App\Controllers;
 
-use App\Exceptions\ControllerException;
+use App\Exceptions\ClassNotFoundException;
 
 class ControllerParser
 {
 	/**
-	 * @throws ControllerException
+	 * @throws ClassNotFoundException
 	 */
 	public static function getInstance(?string $controller) : Controller
 	{
@@ -15,7 +15,7 @@ class ControllerParser
 		$className = "App\Controllers\\$controller";
 
 		if (!class_exists($className)) {
-			throw new ControllerException($className);
+			throw new ClassNotFoundException($className, 'ControllerRetrieving');
 		}
 
 		return new $className();

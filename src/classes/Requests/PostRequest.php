@@ -4,7 +4,7 @@ namespace App\Requests;
 
 use Exception;
 use App\Controllers\ControllerParser;
-use App\Exceptions\ControllerException;
+use App\Exceptions\ClassNotFoundException;
 
 abstract class PostRequest
 {
@@ -21,7 +21,7 @@ abstract class PostRequest
 			}
 
 			$this->message = 'Data submitted successfully';
-		} catch (ControllerException $e) {
+		} catch (ClassNotFoundException $e) {
 			$this->message = 'Unexpected Error';
 		} catch (Exception $e) {
 			$this->message = 'Submitted values not valid';
