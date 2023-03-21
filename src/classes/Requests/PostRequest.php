@@ -41,7 +41,7 @@ abstract class PostRequest
 		return $this->message;
 	}
 
-	protected function finally() : array
+	protected function finally()
 	{
 		$response = new Response();
 
