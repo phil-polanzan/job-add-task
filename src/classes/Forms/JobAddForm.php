@@ -13,8 +13,6 @@ use App\Models\Job;
 
 class JobAddForm extends AjaxForm
 {
-	private Job $job;
-
 	public function __construct(string $title, string $action, ?string $method = null)
 	{
 		parent::__construct($title, $action, self::METHOD_POST);
