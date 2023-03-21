@@ -22,7 +22,6 @@ class Date extends Property
 	{
 		$value = parent::validate() && !is_null(DateTime::createFromFormat(self::FORMAT_STD, $this->getValue()));
 
-		// format Y-m-d
 		if (!empty($this->getValue())) {
 			$parts = explode('-', $this->getValue());
 			$value = $value && checkdate($parts[1], $parts[2], $parts[0]);
