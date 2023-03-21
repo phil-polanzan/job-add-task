@@ -22,11 +22,6 @@ class Model
 		return $prop;
 	}
 
-	public function __set(string $key, Property $property) : void
-	{
-		$this->properties[$property->getName()] = $property;
-	}
-
 	public function setProperties(array $properties) : void
 	{
 		foreach ($properties as $property) {
@@ -34,7 +29,7 @@ class Model
 				throw new ModelException("Error on setting properties");
 			}
 
-			$this->{$property->getName()} = $property;
+			$this->properties[$property->getName()] = $property;
 		}
 	}
 
