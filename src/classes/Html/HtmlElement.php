@@ -27,24 +27,8 @@ abstract class HtmlElement
 
 		if (in_array($key, $this->attributeKeys) && !is_null($value)) {
 			return $value;
-		} elseif (in_array($key, ['label', 'attributes', 'attributeKeys'])) {
-			$value = null;
-
-			switch ($key) {
-				case 'label':
-					$value = $this->label;
-					break;
-
-				case 'attributes':
-					$value = $this->attributes;
-					break;
-
-				case 'attributeKeys':
-					$value = $this->attributeKeys;
-					break;
-			}
-
-			return  $value;
+		} elseif ($value = $this->getPropertyValue($key)) {
+			return $value;
 		}
 
 		return null;
@@ -57,6 +41,28 @@ abstract class HtmlElement
 		}
 
 		throw new HtmlElementException("$key attribute not found");
+	}
+
+	protected function getPropertyValue(string $key)
+	{
+		switch ($key) {
+			case 'label':
+				$value = $this->label;
+				break;
+
+			case 'attributes':
+				$value = $this->attributes;
+				break;
+
+			case 'attributeKeys':
+				$value = $this->attributeKeys;
+				break;
+
+			default:
+				$value = null;
+		}
+
+		return $value;
 	}
 
 	protected function setAttributes(array $attributes) : void

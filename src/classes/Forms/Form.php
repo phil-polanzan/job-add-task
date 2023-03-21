@@ -23,26 +23,22 @@ class Form extends HtmlElement
 		]);
 	}
 
-	/**
-	 * @throws HtmlElementException
-	 */
-	public function __get(string $key)
+	protected function getPropertyValue(string $key)
 	{
-		$value = parent::__get($key);
-
-		if ($value) {
-			return $value;
-		} elseif ($key == 'elements') {
-			switch ($key) {
-				case 'elements':
-					$value = $this->elements;
-					break;
-			}
-
+		if ($value = parent::getPropertyValue($key)) {
 			return $value;
 		}
 
-		throw new HtmlElementException("$key attribute not found");
+		switch ($key) {
+			case 'elements':
+				$value = $this->elements;
+				break;
+
+			default:
+				$value = null;
+		}
+
+		return $value;
 	}
 
 	public function setElements(array $elements) : void
