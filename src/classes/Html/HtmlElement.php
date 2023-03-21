@@ -121,6 +121,7 @@ abstract class HtmlElement
 	protected function formatHtmlAttributesString(array $attributes) : string
 	{
 		$mapFn = function ($key, $value) {
+			$value = trim($value);
 			return "$key=\"$value\"";
 		};
 
