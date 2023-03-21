@@ -12,24 +12,34 @@ class Form extends HtmlElement
 	const METHOD_POST = 'POST';
 
 	private array $elements;
-	private string $title;
 
-	public function __construct(string $title, string $action, ?string $method = null)
+	public function __construct(string $label, string $action, ?string $method = null)
 	{
-		$this->title = $title;
-		$this->addAttributeKeys(['id', 'class', 'method', 'action']);
+		parent::__construct($label);
+		$this->addAttributeKeys(['method', 'action']);
 		$this->addAttributes([
 			'method' => $method ?? self::METHOD_GET,
 			'action' => ROOT_URL . "/$action"
 		]);
 	}
 
+	/**
+	 * @throws HtmlElementException
+	 */
 	public function __get(string $key)
 	{
-		if (in_array($key, $this->getAttributeKeys()) && $value = $this->getAttribute($key)) {
+		$value = parent::__get($key);
+
+		if ($value) {
 			return $value;
-		} elseif (in_array($key, ['title', 'elements'])) {
-			return $this->$key;
+		} elseif ($key == 'elements') {
+			switch ($key) {
+				case 'elements':
+					$value = $this->elements;
+					break;
+			}
+
+			return $value;
 		}
 
 		throw new HtmlElementException("$key attribute not found");
@@ -51,7 +61,7 @@ class Form extends HtmlElement
 		parent::addAttributes($attributes);
 
 		if (!isset($attributes['id'])) {
-			$attributes['id'] = self::formatString((trim($this->title)));
+			$attributes['id'] = self::formatString((trim($this->label)));
 		}
 
 		$this->setAttributes(array_merge($this->getAttributes(), $attributes));
