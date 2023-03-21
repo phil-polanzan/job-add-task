@@ -52,7 +52,7 @@ abstract class FormElement extends HtmlElement
 		parent::addAttributes($attributes);
 
 		if (!isset($attributes['id'])) {
-			$attributes['id'] = $this->getAttribute('name');
+			$attributes['id'] = $this->name;
 		}
 
 		$attributes['required'] ??= false;
