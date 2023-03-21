@@ -2,9 +2,9 @@
 
 namespace App\Requests;
 
-use Exception;
-use App\Controllers\ControllerParser;
 use App\Exceptions\ClassNotFoundException;
+use App\Factories\ControllerFactory;
+use Exception;
 
 abstract class PostRequest
 {
@@ -14,7 +14,7 @@ abstract class PostRequest
 	public function exec(array $args) : void
 	{
 		try {
-			$controller = ControllerParser::getInstance($args['controller'] ?? null);
+			$controller = ControllerFactory::getInstance($args['controller'] ?? null);
 
 			if (!$this->requestOk = $controller->processed($_POST)) {
 				throw new Exception('Model validation error');
