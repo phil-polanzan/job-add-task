@@ -2,10 +2,8 @@
 require 'bootstrap-app.php';
 
 extract([
-	'formType' => 'model',
-	'model' => 'job',
-	'formAction' => 'add',
-	'formLabel' => 'Add New Job'
+	'formType' => 'job-add',
+	'objArgs' => ['Add New Job', null]
 ]);
 
 $file = include ROOT_PATH . "/src/files/forms/$formType/$model/$formAction.php";

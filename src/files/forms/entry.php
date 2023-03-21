@@ -1,14 +1,13 @@
 <?php
 
-use App\Forms\JobAddForm;
+use App\Forms\FormFactory;
 
 require ROOT_PATH . '/templates/inc/open.html';
 
 $cssFiles ??= [];
 $jsFiles ??= [];
 $isAdminForm = true;
-
-$form = new JobAddForm('Add New Job');
+$form = FormFactory::getInstance($formType, $objArgs);
 
 require ROOT_PATH . '/templates/inc/head.php';
 ?>
