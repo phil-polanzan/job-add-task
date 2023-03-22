@@ -2,7 +2,7 @@
 $title = 'Job with valid properties';
 
 $_POST = [
-	'controller' => 'job_controller',
+	'controller' => 'job-controller',
 	'title' => 'Title',
 	'description' => 'Description',
 	'estimated_hours' => '4.5',

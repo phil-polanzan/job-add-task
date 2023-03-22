@@ -16,18 +16,18 @@ $runTests = function($file) {
 	}
 
 	$ok = true;
-	$msg = 'Test Ok';
+	$testMsg = 'Test Ok';
 
 	try {
 		include $file;
 	} catch (AppException $e) {
 		$ok = false;
-		$msg = $e->getMessage();
+		$testMsg = $e->getMessage();
 	} finally {
 		if ($ok) {
-			Messenger::printSuccess($msg);
+			Messenger::printSuccess($testMsg);
 		} else {
-			Messenger::printError($msg);
+			Messenger::printError($testMsg);
 		}
 
 		echo PHP_EOL, PHP_EOL;
