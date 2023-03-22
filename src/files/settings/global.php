@@ -3,15 +3,16 @@
  * In this file global constants are defined
  */
 
-$rootPath = dirname(__DIR__, 3);
-define('ROOT_PATH', $rootPath);
+$notIsCli = php_sapi_name() !== 'cli';
 
-if (!defined('IS_CLI')) {
-	$isNotCli = php_sapi_name() !== 'cli';
-	define('IS_CLI', !$isNotCli);
-}
+$constants = [
+	'ROOT_PATH' => dirname(__DIR__, 3),
+	'IS_CLI' => !$notIsCli,
+	'ROOT_URL' => $notIsCli ? (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://{$_SERVER['HTTP_HOST']}" : ''
+];
 
-if (!IS_CLI) {
-	$rootPathUrl = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://{$_SERVER['HTTP_HOST']}";
-	define('ROOT_URL', $rootPathUrl);
+foreach ($constants as $key => $value) {
+	if (!defined($key)) {
+		define($key, $value);
+	}
 }
