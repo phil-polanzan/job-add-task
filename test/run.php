@@ -11,12 +11,12 @@ use App\Exceptions\AppException;
 $runTests = function($file) {
 	$fileParts = array_map('strtolower', explode('.', $file));
 
-	if (end($fileParts) != 'php') {
+	if (end($fileParts) != 'php' || in_array('inc', explode('/', reset($fileParts)))) {
 		return;
 	}
 
 	$ok = true;
-	$msg = 'Success';
+	$msg = 'Test Ok';
 
 	try {
 		include $file;
