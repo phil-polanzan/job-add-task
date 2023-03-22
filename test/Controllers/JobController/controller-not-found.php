@@ -1,13 +1,6 @@
 <?php
-
-use App\Requests\AsyncPostRequest;
-use App\Terminal\Messenger;
-
-Messenger::printInfo('Controller Not Found');
-AsyncPostRequest::setIgnoreExit(true);
-
+$title = 'Controller Not Found';
 $_POST = [
 	'controller' => 'controller'
 ];
-
-include ROOT_PATH . '/src/files/requests/post.php';
+include ROOT_PATH . '/test/Controllers/JobController/inc/exec.php';

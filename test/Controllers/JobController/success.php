@@ -1,9 +1,5 @@
 <?php
-use App\Requests\AsyncPostRequest;
-use App\Terminal\Messenger;
-
-Messenger::printInfo('Job with valid properties');
-AsyncPostRequest::setIgnoreExit(true);
+$title = 'Job with valid properties';
 
 $_POST = [
 	'controller' => 'job_controller',
@@ -14,5 +10,4 @@ $_POST = [
 	'schedule_start_date' => '2023-03-20',
 	'schedule_end_date' => '2023-03-23'
 ];
-
-include ROOT_PATH . '/src/files/requests/post.php';
+include ROOT_PATH . '/test/Controllers/JobController/inc/exec.php';

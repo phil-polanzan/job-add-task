@@ -20,7 +20,7 @@ $runTests = function($file) {
 
 	try {
 		include $file;
-	} catch(AppException $e) {
+	} catch (AppException $e) {
 		$ok = false;
 		$msg = $e->getMessage();
 	} finally {
