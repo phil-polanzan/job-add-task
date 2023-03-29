@@ -11,4 +11,3 @@ if (isset($additionalAttributes)) {
 }
 
 $elementAttributes = $obj->getAttributesHtmlString($objAttributes);
-

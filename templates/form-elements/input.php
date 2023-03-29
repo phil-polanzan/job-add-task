@@ -5,7 +5,5 @@ require 'attributes.php';
 require 'label.php';
 ?>
 <input <?php echo $elementAttributes; ?>/>
-<?php if ($obj->validationErrorMessage): ?>
-	<div class="invalid-feedback"><?php echo $obj->validationErrorMessage; ?></div>
 <?php
-endif;
+require 'invalid_feedback.php';
