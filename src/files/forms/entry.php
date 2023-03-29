@@ -12,7 +12,7 @@ $form = FormFactory::getInstance($formType, $objArgs);
 require ROOT_PATH . '/templates/inc/head.php';
 ?>
 <div class="page">
-<?php require ROOT_PATH . '/templates/inc/page-header.html'; ?>
+	<?php require ROOT_PATH . '/templates/inc/page-header.html'; ?>
 	<main>
 		<div class="form-container">
 			<?php require ROOT_PATH . '/templates/inc/form-header.php'; ?>
