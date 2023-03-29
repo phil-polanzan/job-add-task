@@ -16,7 +16,7 @@
 	<?php endforeach; ?>
 
 	<?php foreach ($jsFiles as $item): ?>
-		<script src="<?php echo ROOT_URL . "/lib/js/$item"; ?>" id="<?php echo strtolower(str_replace('.js', '', $item)); ?>-css"></script>
+		<script src="<?php echo ROOT_URL . "/lib/js/$item"; ?>" id="<?php echo strtolower(str_replace('.js', '', $item)); ?>-js"></script>
 	<?php endforeach; ?>
 </head>
 <body>
