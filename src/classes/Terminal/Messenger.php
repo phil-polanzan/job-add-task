@@ -16,23 +16,28 @@ class Messenger
 		self::INFO_TYPE => '1;37'
 	];
 
-	public static function getMsg(string $msg, string $type) : string {
+	public static function getMsg(string $msg, string $type) : string
+	{
 		return sprintf("\033[%sm[%s] %s\033[0m" . PHP_EOL,  self::$colours[$type], $type, $msg);
 	}
 
-	public static function printError(string $msg) {
+	public static function printError(string $msg)
+	{
 		echo self::getMsg($msg, self::ERROR_TYPE);
 	}
 
-	public static function printSuccess(string $msg) {
+	public static function printSuccess(string $msg)
+	{
 		echo self::getMsg($msg, self::SUCCESS_TYPE);
 	}
 
-	public static function printInfo(string $msg) {
+	public static function printInfo(string $msg)
+	{
 		echo self::getMsg($msg, self::INFO_TYPE);
 	}
 
-	public static function printWarning(string $msg) {
+	public static function printWarning(string $msg)
+	{
 		echo self::getMsg($msg, self::WARNING_TYPE);
 	}
 }

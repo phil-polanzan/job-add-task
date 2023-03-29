@@ -25,7 +25,8 @@ class JobHour extends Numeric
 		$this->setStep($step);
 	}
 
-	private function setStep(?float $step) {
+	private function setStep(?float $step)
+	{
 		$this->step = $step ?? self::UNIT_HOUR;
 
 		if (!in_array($this->step, self::UNITS)) {

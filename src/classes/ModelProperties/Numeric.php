@@ -21,7 +21,8 @@ class Numeric extends Property
 		$this->setType($type);
 	}
 
-	private function setType(?string $type) {
+	private function setType(?string $type)
+	{
 		$this->type = $type ?? self::TYPE_INT;
 
 		if (!in_array($this->type, self::TYPES)) {
