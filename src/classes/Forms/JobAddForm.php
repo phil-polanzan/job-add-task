@@ -11,12 +11,11 @@ use App\FormElements\SubmitButton;
 use App\FormElements\TextInput;
 use App\Models\Job;
 
-class JobAddForm extends AjaxForm
+class JobAddForm extends AjaxPostForm
 {
-	public function __construct(string $label, ?string $action = null)
+	public function __construct(string $label)
 	{
-		$action ??= 'src/files/requests/ajax-post.php';
-		parent::__construct($label, $action, self::METHOD_POST);
+		parent::__construct($label);
 		$this->addAttributes([
 			'id' => 'job-add',
 			'class' => 'app-form model-form'
