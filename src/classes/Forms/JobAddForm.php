@@ -62,7 +62,7 @@ class JobAddForm extends AjaxForm
 		$checkbox->setNotes('For testing back-end validation');
 
 		$this->setElements([
-			new HiddenInput('controller', 'job_controller'),
+			new HiddenInput('controller', 'job-controller'),
 			$title,
 			new HtmlTextarea('description', 'Description'),
 			$estimatedHours,
