@@ -4,7 +4,6 @@ namespace App\Forms;
 
 use App\FormElements\CheckBox;
 use App\FormElements\DateInput;
-use App\FormElements\HiddenInput;
 use App\FormElements\HtmlTextarea;
 use App\FormElements\NumericInput;
 use App\FormElements\SubmitButton;
@@ -15,7 +14,7 @@ class JobAddForm extends AjaxPostForm
 {
 	public function __construct(string $label)
 	{
-		parent::__construct($label);
+		parent::__construct($label, 'job');
 		$this->addAttributes([
 			'id' => 'job-add',
 			'class' => 'app-form model-form'
@@ -61,7 +60,6 @@ class JobAddForm extends AjaxPostForm
 		$checkbox->setNotes('For testing back-end validation');
 
 		$this->setElements([
-			new HiddenInput('controller', 'job-controller'),
 			$title,
 			new HtmlTextarea('description', 'Description'),
 			$estimatedHours,
