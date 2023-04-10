@@ -2,12 +2,10 @@
 
 namespace App\Factories;
 
-use App\Controllers\Controller;
-
 class ControllerFactory extends Factory
 {
-	public static function getInstance(string $tag, array $objArgs = []) : Controller
+	public static function getNameSpace() : string
 	{
-		return static::parse('App\Controllers', $tag, $objArgs);
+		return 'App\Controllers';
 	}
 }

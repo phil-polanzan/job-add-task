@@ -12,20 +12,20 @@ abstract class Factory
 		return implode('', array_map('ucfirst', array_map('strtolower', explode('-', $formType))));
 	}
 
+	protected abstract static function getNameSpace(): string;
+
 	/**
 	 * @throws ClassNotFoundException
 	 */
-	protected static function parse(string $nameSpace, string $tag, array $objArgs = [])
-	{
+	public static function getInstance(string $tag, array $objArgs = []) {
+		$nameSpace = static::getNameSpace();
 		$className = $nameSpace . '\\' . static::getClassName($tag);
 
 		if (!class_exists($className)) {
-			$errorType = end(explode('\\', $nameSpace)) . 'Retrieving';
-			throw new ClassNotFoundException($className, $errorType);
+			$class = explode('\\', $nameSpace);
+			throw new ClassNotFoundException($className, end($class) . ' Retrieving');
 		}
 
 		return new $className(...$objArgs);
 	}
-
-	public abstract static function getInstance(string $tag, array $objArgs = []);
 }
