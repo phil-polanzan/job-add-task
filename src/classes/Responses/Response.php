@@ -32,7 +32,9 @@ class Response
 
 	public function printData() : void
 	{
-		echo "{$this->status} : {$this->message}";
+		echo '<pre>';
+		print_r($this->getData());
+		echo '</pre>';
 	}
 
 	public function getData() : array
