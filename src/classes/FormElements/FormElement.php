@@ -2,8 +2,6 @@
 
 namespace App\FormElements;
 
-
-use App\Exceptions\HtmlElementException;
 use App\Html\HtmlElement;
 
 abstract class FormElement extends HtmlElement

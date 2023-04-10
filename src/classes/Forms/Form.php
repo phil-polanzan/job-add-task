@@ -16,7 +16,7 @@ class Form extends HtmlElement
 	public function __construct(string $label, string $action, ?string $method = null)
 	{
 		parent::__construct($label);
-		$this->addAttributeKeys(['method', 'action', 'data-form-class']);
+		$this->addAttributeKeys(['method', 'action', 'data-form-tag']);
 		$this->addAttributes([
 			'method' => $method ?? self::METHOD_GET,
 			'action' => ROOT_URL . "/$action",
@@ -30,8 +30,7 @@ class Form extends HtmlElement
 		return implode(
 			'-', array_map(
 				'strtolower', array_filter(
-					preg_split('/(?=[A-Z])/', end(explode('\\', get_class($this)))
-					)
+					preg_split('/(?=[A-Z])/', end(explode('\\', get_class($this))))
 				)
 			)
 		);
