@@ -7,10 +7,5 @@ extract([
 ]);
 
 $file = include ROOT_PATH . "/src/files/forms/$formType/$model/$formAction.php";
-
-if (file_exists($file)) {
-	require $file;
-} else {
-	require ROOT_PATH . '/src/files/forms/entry.php';
-}
-
+$file = file_exists($file) ? $file : ROOT_PATH . '/src/files/forms/entry.php';
+require $file;
