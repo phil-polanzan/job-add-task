@@ -41,7 +41,7 @@ class Date extends Property
 			$dt0 = DateTime::createFromFormat(self::FORMAT_STD, $this->getValue());
 			$dt1 = DateTime::createFromFormat(self::FORMAT_STD, $object->getValue());
 
-			return  $dt0 > $dt1;
+			return $dt0 > $dt1;
 		}
 
 		return false;
