@@ -4,7 +4,7 @@ use App\ModelProperties\Varchar;
 use App\Models\Model;
 use App\Terminal\Messenger;
 
-Messenger::printInfo('Model with wrong properties');
+Messenger::info('Model with wrong properties');
 $object = new Model();
 $object->setProperties([
 	new Varchar('test', 10),

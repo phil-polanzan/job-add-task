@@ -4,7 +4,7 @@ use App\Models\Job;
 use App\Terminal\Messenger;
 use App\Exceptions\ModelValidationException;
 
-Messenger::printInfo('Job with not valid start date');
+Messenger::info('Job with not valid start date');
 $object = new Job();
 $object->setPropertiesValues([
 	'title' => 'Title',

@@ -4,7 +4,7 @@ use App\Models\Job;
 use App\Terminal\Messenger;
 use App\Exceptions\ModelValidationException;
 
-Messenger::printInfo('Job with not valid hour');
+Messenger::info('Job with not valid hour');
 $object = new Job();
 $object->setPropertiesValues([
 	'title' => 'Title',

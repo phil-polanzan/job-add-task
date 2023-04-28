@@ -21,22 +21,22 @@ class Messenger
 		return sprintf("\033[%sm[%s] %s\033[0m" . PHP_EOL,  self::$colours[$type], $type, $msg);
 	}
 
-	public static function printError(string $msg)
+	public static function error(string $msg)
 	{
 		echo self::getMsg($msg, self::ERROR_TYPE);
 	}
 
-	public static function printSuccess(string $msg)
+	public static function success(string $msg)
 	{
 		echo self::getMsg($msg, self::SUCCESS_TYPE);
 	}
 
-	public static function printInfo(string $msg)
+	public static function info(string $msg)
 	{
 		echo self::getMsg($msg, self::INFO_TYPE);
 	}
 
-	public static function printWarning(string $msg)
+	public static function warning(string $msg)
 	{
 		echo self::getMsg($msg, self::WARNING_TYPE);
 	}

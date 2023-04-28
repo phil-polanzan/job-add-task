@@ -25,9 +25,9 @@ $runTests = function($file) {
 		$testMsg = $e->getMessage();
 	} finally {
 		if ($ok) {
-			Messenger::printSuccess($testMsg);
+			Messenger::success($testMsg);
 		} else {
-			Messenger::printError($testMsg);
+			Messenger::error($testMsg);
 		}
 
 		echo PHP_EOL, PHP_EOL;

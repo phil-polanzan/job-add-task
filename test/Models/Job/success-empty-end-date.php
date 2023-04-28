@@ -4,7 +4,7 @@ use App\Models\Job;
 use App\Terminal\Messenger;
 use App\Exceptions\ModelValidationException;
 
-Messenger::printInfo('Job with valid values and empty end date');
+Messenger::info('Job with valid values and empty end date');
 $object = new Job();
 $object->setPropertiesValues([
 	'title' => 'Title',

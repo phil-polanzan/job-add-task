@@ -4,7 +4,7 @@ use App\Models\Job;
 use App\Terminal\Messenger;
 use App\Exceptions\ModelValidationException;
 
-Messenger::printInfo('Job with empty title');
+Messenger::info('Job with empty title');
 $object = new Job();
 $object->setPropertiesValues([
 	'title' => '',

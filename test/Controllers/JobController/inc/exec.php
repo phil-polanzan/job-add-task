@@ -5,7 +5,7 @@ use App\Requests\AsyncPostRequest;
 use App\Terminal\Messenger;
 use App\Responses\Response;
 
-Messenger::printInfo($title);
+Messenger::info($title);
 AsyncPostRequest::setIgnoreExit(true);
 
 ob_start();

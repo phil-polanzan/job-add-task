@@ -4,7 +4,7 @@ use App\Models\Job;
 use App\Terminal\Messenger;
 use App\Exceptions\ModelValidationException;
 
-Messenger::printInfo('Job with longer title');
+Messenger::info('Job with longer title');
 $title = '012345678901234567890123456789012345678901234567891';
 $object = new Job();
 $object->setPropertiesValues([
