@@ -92,6 +92,10 @@ class Form extends HtmlElement
 			['name' => 'lib/js/vendor/bootstrap/bootstrap.min.js'],
 			['name' => 'lib/js/vendor/bootstrap/bootstrap-datepicker.min.js'],
 			['name' => 'lib/js/vendor/summernote/summernote.min.js'],
+			[
+				'name' => 'lib/js/app/files/form.js',
+				'is_module' => true
+			]
 		];
 	}
 }
