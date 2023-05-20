@@ -6,7 +6,6 @@ use App\Exceptions\ClassNotFoundException;
 
 abstract class Factory
 {
-
 	protected static function getClassName(string $formType): string
 	{
 		return implode('', array_map('ucfirst', array_map('strtolower', explode('-', $formType))));
