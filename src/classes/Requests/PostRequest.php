@@ -4,47 +4,27 @@ namespace App\Requests;
 
 use App\Exceptions\ClassNotFoundException;
 use App\Factories\ControllerFactory;
-use App\Responses\Response;
 use Exception;
 
-abstract class PostRequest
+class PostRequest extends Request
 {
-	private bool $requestOk = false;
-	private string $message = '';
-
 	public function exec(array $args) : void
 	{
 		try {
 			$controller = ControllerFactory::getInstance($args['controller'] ?? null);
+			$this->setRequestOk($controller->processed($_POST));
 
-			if (!$this->requestOk = $controller->processed($_POST)) {
+			if (!$this->getRequestOk()) {
 				throw new Exception('Model validation error');
 			}
 
-			$this->message = 'Data submitted successfully';
+			$this->setMessage('Data submitted successfully');
 		} catch (ClassNotFoundException $e) {
-			$this->message = 'Unexpected Error';
+			$this->setMessage('Unexpected Error');
 		} catch (Exception $e) {
-			$this->message = 'Submitted values not valid';
+			$this->setMessage('Submitted values not valid');
 		} finally {
 			$this->finally();
 		}
-	}
-
-	protected function getRequestOk() : bool
-	{
-		return $this->requestOk;
-	}
-
-	protected function getMessage() : string
-	{
-		return $this->message;
-	}
-
-	protected function finally()
-	{
-		$response = new Response();
-
-		return $response->getData();
 	}
 }
