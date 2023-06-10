@@ -44,7 +44,10 @@ class Form extends HtmlElement
 			return $value;
 		}
 
-		return $this->getPropertyValueFromKeys(['elements'], $key);
+		return match($key) {
+			'elements' => $this->$key,
+			default => null
+		};
 	}
 
 	public function setElements(array $elements) : void

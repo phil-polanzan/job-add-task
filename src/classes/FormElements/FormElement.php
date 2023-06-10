@@ -21,8 +21,10 @@ abstract class FormElement extends HtmlElement
 		if ($value = parent::getPropertyValue($key)) {
 			return $value;
 		}
-
-		return $this->getPropertyValueFromKeys(['notes', 'validationErrorMessage'], $key);
+		return match($key) {
+			'notes', 'validationErrorMessage' => $this->$key,
+			default => null
+		};
 	}
 
 	public function setNotes(string $notes) : void

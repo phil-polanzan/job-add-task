@@ -51,14 +51,12 @@ abstract class HtmlElement
 		}
 	}
 
-	protected function getPropertyValueFromKeys(array $keys, string $key)
-	{
-		return in_array($key, $keys) ? $this->$key : null;
-	}
-
 	protected function getPropertyValue(string $key)
 	{
-		return $this->getPropertyValueFromKeys(['label', 'attributes', 'attributeKeys', 'templateFile'], $key);
+		return match($key) {
+			'label', 'attributes', 'attributeKeys', 'templateFile' => $this->$key,
+			default => null
+		};
 	}
 
 	public function addAttributes(array $attributes) : void
