@@ -73,12 +73,14 @@ abstract class HtmlElement
 		$this->attributeKeys = array_unique(array_merge($this->attributeKeys, $keys));
 	}
 
+	abstract protected function getFileDirectoryPath() : string;
+
 	/**
 	 * @throws HtmlElementException
 	 */
 	public function render() : void
 	{
-		$file = ROOT_PATH . "/templates/form-elements/{$this->templateFile}";
+		$file = ROOT_PATH . "/" . $this->getFileDirectoryPath() . "/{$this->templateFile}";
 
 		if (!file_exists($file)) {
 			throw new HtmlElementException("$file not found");

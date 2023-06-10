@@ -16,6 +16,11 @@ abstract class FormElement extends HtmlElement
 		$this->addAttributes(['name' => $name]);
 	}
 
+	protected function getFileDirectoryPath() : string
+	{
+		return '/templates/form-elements/fields';
+	}
+
 	protected function getPropertyValue(string $key)
 	{
 		if ($value = parent::getPropertyValue($key)) {

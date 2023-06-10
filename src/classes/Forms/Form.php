@@ -22,7 +22,12 @@ class Form extends HtmlElement
 			'action' => ROOT_URL . "/$action",
 			'data-form-tag' => $this->getFormTagAttribute()
 		]);
-		$this->templateFile = '/forms/default.php';
+		$this->templateFile = 'default.php';
+	}
+
+	protected function getFileDirectoryPath() : string
+	{
+		return '/templates/form-elements/forms';
 	}
 
 	private function getFormTagAttribute() : string
