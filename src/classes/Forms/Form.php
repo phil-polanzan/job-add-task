@@ -42,16 +42,7 @@ class Form extends HtmlElement
 			return $value;
 		}
 
-		switch ($key) {
-			case 'elements':
-				$value = $this->elements;
-				break;
-
-			default:
-				$value = null;
-		}
-
-		return $value;
+		return $this->getPropertyValueFromKeys(['elements'], $key);
 	}
 
 	public function setElements(array $elements) : void
