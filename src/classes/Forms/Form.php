@@ -27,10 +27,12 @@ class Form extends HtmlElement
 
 	private function getFormTagAttribute() : string
 	{
+		$classTag = explode('\\', get_class($this));
+
 		return implode(
 			'-', array_map(
 				'strtolower', array_filter(
-					preg_split('/(?=[A-Z])/', end(explode('\\', get_class($this))))
+					preg_split('/(?=[A-Z])/', end($classTag))
 				)
 			)
 		);
