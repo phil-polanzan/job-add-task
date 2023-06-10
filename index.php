@@ -5,7 +5,7 @@ extract([
 	'formType' => 'job-add-form',
 	'objArgs' => ['Add New Job', null]
 ]);
+$customFile = isset($formType) && isset($model) && isset($formAction) ?
+	ROOT_PATH . "/src/files/forms/$formType/$model/$formAction.php" : null;
 
-$file = ROOT_PATH . "/src/files/forms/$formType/$model/$formAction.php";
-$file = file_exists($file) ? $file : ROOT_PATH . '/src/files/forms/entry.php';
-require $file;
+require file_exists($customFile) ? $customFile : ROOT_PATH . '/src/files/forms/entry.php';;
