@@ -1,6 +1,6 @@
 <?php
 $obj = $args['obj'];
 
-require 'attributes.php';
+require '../inc/attributes.php';
 ?>
 <input <?php echo $elementAttributes; ?>/>

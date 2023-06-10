@@ -1,9 +1,9 @@
 <?php
 $obj = $args['obj'];
 
-require 'attributes.php';
-require 'label.php';
+require '../inc/attributes.php';
+require '../inc/label.php';
 ?>
 <input <?php echo $elementAttributes; ?>/>
 <?php
-require 'invalid_feedback.php';
+require '../inc/invalid_feedback.php';
