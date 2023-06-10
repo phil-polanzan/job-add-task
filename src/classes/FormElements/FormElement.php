@@ -22,17 +22,7 @@ abstract class FormElement extends HtmlElement
 			return $value;
 		}
 
-		switch ($key) {
-			case 'notes':
-				$value = $this->notes;
-				break;
-
-			case 'validationErrorMessage':
-				$value = $this->validationErrorMessage;
-				break;
-		}
-
-		return $value;
+		return $this->getPropertyValueFromKeys(['notes', 'validationErrorMessage'], $key);
 	}
 
 	public function setNotes(string $notes) : void
