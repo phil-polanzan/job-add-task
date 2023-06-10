@@ -52,7 +52,7 @@ class Model
 		return $valid;
 	}
 
-	public function setPropertiesValues(array $values)
+	public function setPropertiesValues(array $values) : void
 	{
 		foreach ($this->properties as $key => $property) {
 			$values[$key] ??= null;

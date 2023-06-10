@@ -8,4 +8,4 @@ extract([
 $customFile = isset($formType) && isset($model) && isset($formAction) ?
 	ROOT_PATH . "/src/files/forms/$formType/$model/$formAction.php" : null;
 
-require file_exists($customFile) ? $customFile : ROOT_PATH . '/src/files/forms/entry.php';;
+require file_exists($customFile) ? $customFile : ROOT_PATH . '/src/files/forms/entry.php';
