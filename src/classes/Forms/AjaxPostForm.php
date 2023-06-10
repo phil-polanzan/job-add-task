@@ -12,7 +12,7 @@ class AjaxPostForm extends Form
 	{
 		parent::__construct($label, 'src/files/requests/ajax-post.php', self::METHOD_POST);
 		$this->controllerName = $controllerName ?? 'ajax-post';
-		$this->templateFile = 'ajax-form.php';
+		$this->templateFile = '/forms/ajax.php';
 	}
 
 	public function setElements(array $elements) : void
