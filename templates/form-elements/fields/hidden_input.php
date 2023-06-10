@@ -1,6 +1,6 @@
 <?php
 $obj = $args['obj'];
 
-require '../inc/attributes.php';
+require __DIR__ . '/../inc/attributes.php';
 ?>
 <input <?php echo $elementAttributes; ?>/>
