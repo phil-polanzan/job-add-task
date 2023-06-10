@@ -16,4 +16,9 @@ class Button extends HtmlElement
 		]);
 		$this->templateFile = 'button.php';
 	}
+
+	protected function getFileDirectoryPath() : string
+	{
+		return '/templates/form-elements/fields';
+	}
 }
