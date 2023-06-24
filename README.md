@@ -2,7 +2,7 @@
 WorkPal Full-stack Technical Test
 
 ## Requirements
-PHP minimum version is PHP **>=7.4**.
+PHP minimum version is PHP **>=8.0**.
 
 Set a custom url for your development environment.
 
