@@ -11,7 +11,7 @@ abstract class Request
 
 	public abstract function exec(array $args) :void;
 
-	protected function getRequestOk() : bool
+	public function getRequestOk() : bool
 	{
 		return $this->requestOk;
 	}
@@ -21,7 +21,7 @@ abstract class Request
 		$this->requestOk = $value;
 	}
 
-	protected function getMessage() : string
+	public function getMessage() : string
 	{
 		return $this->message;
 	}
@@ -33,7 +33,7 @@ abstract class Request
 
 	protected function finally()
 	{
-		$response = new Response();
+		$response = new Response($this->getRequestOk(), $this->getMessage());
 
 		return $response->getData();
 	}

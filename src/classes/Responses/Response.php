@@ -10,19 +10,15 @@ class Response
 	private string $status;
 	private string $message;
 
-	public function setStatus(?string $status) : void
+	public function __construct(bool $status, string $message)
 	{
-		$this->status = $status ?? self::STATUS_SUCCESS;
+		$this->status = $status ? self::STATUS_SUCCESS : self::STATUS_ERROR;
+		$this->message = $message;
 	}
 
 	public function getStatus() : string
 	{
 		return $this->status;
-	}
-
-	public function setMessage(string $message) : void
-	{
-		$this->message = $message;
 	}
 
 	public function getMessage() : string
