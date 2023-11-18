@@ -34,11 +34,6 @@ class JobHour extends Numeric
 		}
 	}
 
-	public function getStep() : float
-	{
-		return $this->step;
-	}
-
 	public function validate() : bool
 	{
 		$fraction = $this->getValue() / $this->step;

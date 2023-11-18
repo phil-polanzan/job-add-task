@@ -25,11 +25,6 @@ class Varchar extends Property
 		}
 	}
 
-	public function getLength() : int
-	{
-		return $this->length;
-	}
-
 	public function sanitise() : void
 	{
 		$this->setValue(trim($this->getValue()));

@@ -16,16 +16,6 @@ class Response
 		$this->message = $message;
 	}
 
-	public function getStatus() : string
-	{
-		return $this->status;
-	}
-
-	public function getMessage() : string
-	{
-		return $this->message;
-	}
-
 	public function printData() : void
 	{
 		echo '<pre>';
@@ -36,8 +26,8 @@ class Response
 	public function getData() : array
 	{
 		return [
-			'status' => $this->getStatus(),
-			'message' => $this->getMessage()
+			'status' => $this->status,
+			'message' => $this->message
 		];
 	}
 }
