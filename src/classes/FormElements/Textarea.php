@@ -2,7 +2,7 @@
 
 namespace App\FormElements;
 
-class Textarea extends FormElement
+class Textarea extends VariableFormElement
 {
 	public function __construct(string $name, ?string $label, $value = null)
 	{

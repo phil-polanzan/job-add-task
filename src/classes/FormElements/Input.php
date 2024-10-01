@@ -2,7 +2,7 @@
 
 namespace App\FormElements;
 
-abstract class Input extends FormElement
+abstract class Input extends VariableFormElement
 {
 	public function __construct(string $name, string $type, ?string $label, $value = null)
 	{

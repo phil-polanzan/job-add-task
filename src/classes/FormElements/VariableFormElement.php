@@ -4,7 +4,7 @@ namespace App\FormElements;
 
 use App\Html\HtmlElement;
 
-abstract class FormElement extends HtmlElement
+abstract class VariableFormElement extends HtmlElement
 {
 	private string $notes = '';
 	private string $validationErrorMessage = '';
