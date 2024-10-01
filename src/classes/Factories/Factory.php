@@ -16,7 +16,8 @@ abstract class Factory
 	/**
 	 * @throws ClassNotFoundException
 	 */
-	public static function getInstance(string $tag, array $objArgs = []) {
+	public static function getInstance(string $tag, array $objArgs = [])
+	{
 		$nameSpace = static::getNameSpace();
 		$className = $nameSpace . '\\' . static::getClassName($tag);
 
