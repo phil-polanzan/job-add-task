@@ -5,4 +5,8 @@ $alertFiles = [
 	'templates/inc/form-danger-alert.html'
 ];
 
+foreach ($alertFiles as $file) {
+	require ROOT_PATH . "/$file";
+}
+
 require ROOT_PATH . '/templates/form-elements/forms/default.php';
