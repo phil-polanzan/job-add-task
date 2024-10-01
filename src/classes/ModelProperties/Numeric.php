@@ -30,6 +30,11 @@ class Numeric extends Property
 		}
 	}
 
+	public function getType() : string
+	{
+		return $this->type;
+	}
+
 	private function isRangeValueValid() : bool
 	{
 		if (!is_null($this->minValue) && !is_null($this->maxValue)) {
@@ -48,6 +53,11 @@ class Numeric extends Property
 		}
 	}
 
+	public function getMinValue()
+	{
+		return $this->minValue;
+	}
+
 	public function setMaxValue($value) : void
 	{
 		$this->maxValue = $this->castValue($value);
@@ -57,9 +67,14 @@ class Numeric extends Property
 		}
 	}
 
+	public function getMaxValue()
+	{
+		return $this->maxValue;
+	}
+
 	private function castValue($value)
 	{
-		return $this->type == self::TYPE_INT ? (int)$value : (float)$value;
+		return $this->getType() == self::TYPE_INT ? (int)$value : (float)$value;
 	}
 
 	public function sanitise() : void
