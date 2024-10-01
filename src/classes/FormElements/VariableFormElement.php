@@ -2,9 +2,7 @@
 
 namespace App\FormElements;
 
-use App\Html\HtmlElement;
-
-abstract class VariableFormElement extends HtmlElement
+abstract class VariableFormElement extends FormElement
 {
 	private string $notes = '';
 	private string $validationErrorMessage = '';
@@ -14,11 +12,6 @@ abstract class VariableFormElement extends HtmlElement
 		parent::__construct($label ?? $name);
 		$this->addAttributeKeys(['name', 'required']);
 		$this->addAttributes(['name' => $name]);
-	}
-
-	protected function getFileDirectoryPath() : string
-	{
-		return '/templates/form-elements/fields';
 	}
 
 	protected function getPropertyValue(string $key)

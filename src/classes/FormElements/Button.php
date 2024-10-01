@@ -2,9 +2,7 @@
 
 namespace App\FormElements;
 
-use App\Html\HtmlElement;
-
-class Button extends HtmlElement
+class Button extends FormElement
 {
 	public function __construct(string $label, string $type)
 	{
@@ -15,10 +13,5 @@ class Button extends HtmlElement
 			'class' => 'btn btn-primary'
 		]);
 		$this->templateFile = 'button.php';
-	}
-
-	protected function getFileDirectoryPath() : string
-	{
-		return '/templates/form-elements/fields';
 	}
 }
