@@ -1,8 +1,30 @@
-# Job Add Task
-WorkPal Full-stack Technical Test
+# Job Add Task - WorkPal Full-stack Technical Test
+
+## Overview of task:
+
+We require a small form which will add a job to a system.
+
+The form should contain:
+- Job Title ( Input type text ) ( Required ) ( Max length 50 Char )
+- Job Description ( Input type textarea )
+- Job EstHours ( Input type Number )
+- Entry Date ( DateTimePicker ) ( Required )
+- Schedule Start Date ( DateTimePicker )
+- Schedule End Date ( DateTimePicker )
+
+Additional Guidelines:
+- If the Schedule Start Date is populated:
+- Schedule Start Date cannot be after the Schedule End Date
+- Schedule End Date can not be before the Schedule Start Date.
+- There should be error handling and validation either client side or server side.
+- It should POST using an Ajax request ( page should not reload ).
+- Response from server side should be in JSON format.
+- SQL is not required for this test, but it should inform the user if the job has been added successfully
+  or not.
+- Unit tests are not a requirement of this task but would be welcomed if included.
 
 ## Requirements
-PHP minimum version is PHP **>=8.0**.
+PHP minimum version is PHP **>=8.2**.
 
 Set a custom url for your development environment.
 
