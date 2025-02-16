@@ -25,7 +25,7 @@ class Model
 	public function setProperties(array $properties) : void
 	{
 		foreach ($properties as $property) {
-			if (!is_object($property) || !is_subclass_of(get_class($property), 'App\ModelProperties\Property')) {
+			if (!is_object($property) || !is_subclass_of($property::class, 'App\ModelProperties\Property')) {
 				throw new ModelException("Error on setting properties");
 			}
 

@@ -32,7 +32,7 @@ class Form extends HtmlElement
 
 	private function getFormTagAttribute() : string
 	{
-		$classTag = explode('\\', get_class($this));
+		$classTag = explode('\\', $this::class);
 
 		return implode(
 			'-', array_map(
@@ -58,7 +58,7 @@ class Form extends HtmlElement
 	public function setElements(array $elements) : void
 	{
 		foreach ($elements as $element) {
-			if (!is_object($element) || !is_subclass_of(get_class($element), 'App\Html\HtmlElement')) {
+			if (!is_object($element) || !is_subclass_of($element::class, 'App\Html\HtmlElement')) {
 				throw new FormException("Error on setting elements");
 			}
 
