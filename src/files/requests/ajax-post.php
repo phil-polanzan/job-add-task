@@ -4,3 +4,5 @@
 
 $requestClassName = 'App\Requests\AsyncPostRequest';
 require_once 'inc/exec.php';
+$response->printData();
+die();

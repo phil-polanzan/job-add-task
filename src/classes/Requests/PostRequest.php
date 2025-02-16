@@ -23,8 +23,6 @@ class PostRequest extends Request
 			$this->setMessage('Unexpected Error');
 		} catch (Exception $e) {
 			$this->setMessage('Submitted values not valid');
-		} finally {
-			$this->finally();
 		}
 	}
 }

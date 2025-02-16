@@ -31,10 +31,8 @@ abstract class Request
 		$this->message = $msg;
 	}
 
-	protected function finally()
+	public function getResponse() : Response
 	{
-		$response = new Response($this->getRequestOk(), $this->getMessage());
-
-		return $response->getData();
+		return new Response($this->getRequestOk(), $this->getMessage());
 	}
 }
