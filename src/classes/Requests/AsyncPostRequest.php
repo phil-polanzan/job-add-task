@@ -7,25 +7,8 @@ use App\Responses\Response;
 
 class AsyncPostRequest extends PostRequest
 {
-	private static bool $ignoreExit = false;
-
-	protected function finally()
+	public function getResponse() : JsonResponse
 	{
-		$response = new JsonResponse($this->getRequestOk(), $this->getMessage());
-		$response->printData();
-
-		if (!self::$ignoreExit) {
-			die();
-		}
-	}
-
-	public static function setIgnoreExit(bool $value = false) : void
-	{
-		self::$ignoreExit = $value;
-	}
-
-	public static function getIgnoreExit() : bool
-	{
-		return self::$ignoreExit;
+		return new JsonResponse($this->getRequestOk(), $this->getMessage());
 	}
 }
