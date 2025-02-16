@@ -55,8 +55,7 @@ class Model
 	public function setPropertiesValues(array $values) : void
 	{
 		foreach ($this->properties as $key => $property) {
-			$values[$key] ??= null;
-			$property->setValue($values[$key]);
+			$property->setValue($values[$key] ?? null);
 			$property->sanitise();
 		}
 	}
