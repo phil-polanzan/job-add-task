@@ -74,6 +74,7 @@ class Numeric extends Property
 
 	private function castValue($value) : int|float
 	{
+		$value ??= trim($value);
 		return $this->getType() == self::TYPE_INT ? (int)$value : (float)$value;
 	}
 
