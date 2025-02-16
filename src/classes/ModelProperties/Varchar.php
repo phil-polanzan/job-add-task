@@ -14,7 +14,7 @@ class Varchar extends Property
 		$this->setLength($length);
 	}
 
-	public function setLength(?int $length)
+	public function setLength(?int $length) : void
 	{
 		$this->length = $length ?? self::MAX_LENGTH;
 

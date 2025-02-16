@@ -9,22 +9,22 @@ class Messenger
 		return sprintf("\033[%sm[%s] %s\033[0m" . PHP_EOL,  $colour, $type, $msg);
 	}
 
-	public static function error(string $msg)
+	public static function error(string $msg) : void
 	{
 		echo self::getMsg($msg, 'Error', '0;31');
 	}
 
-	public static function success(string $msg)
+	public static function success(string $msg) : void
 	{
 		echo self::getMsg($msg, 'Success', '0;32');
 	}
 
-	public static function info(string $msg)
+	public static function info(string $msg) : void
 	{
 		echo self::getMsg($msg, 'Info', '1;37');
 	}
 
-	public static function warning(string $msg)
+	public static function warning(string $msg) : void
 	{
 		echo self::getMsg($msg, 'Warning', '1;33');
 	}

@@ -21,7 +21,7 @@ class Numeric extends Property
 		$this->setType($type);
 	}
 
-	private function setType(?string $type)
+	private function setType(?string $type) : void
 	{
 		$this->type = $type ?? self::TYPE_INT;
 
@@ -53,7 +53,7 @@ class Numeric extends Property
 		}
 	}
 
-	public function getMinValue()
+	public function getMinValue() : null|int|float
 	{
 		return $this->minValue;
 	}
@@ -67,12 +67,12 @@ class Numeric extends Property
 		}
 	}
 
-	public function getMaxValue()
+	public function getMaxValue() : null|int|float
 	{
 		return $this->maxValue;
 	}
 
-	private function castValue($value)
+	private function castValue($value) : int|float
 	{
 		return $this->getType() == self::TYPE_INT ? (int)$value : (float)$value;
 	}
