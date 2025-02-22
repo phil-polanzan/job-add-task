@@ -40,16 +40,13 @@ class Model
 
 	public function validate() : bool
 	{
-		$valid = true;
-
 		foreach ($this->properties as $key => $property) {
 			if (!$property->validate()) {
-				$valid = false;
-				break;
+				return false;
 			}
 		}
 
-		return $valid;
+		return true;
 	}
 
 	public function setPropertiesValues(array $values) : void
