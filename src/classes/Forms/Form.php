@@ -8,8 +8,8 @@ use App\Html\HtmlElement;
 
 class Form extends HtmlElement
 {
-	const METHOD_GET = 'GET';
-	const METHOD_POST = 'POST';
+	const string METHOD_GET = 'GET';
+	const string METHOD_POST = 'POST';
 
 	private array $elements;
 

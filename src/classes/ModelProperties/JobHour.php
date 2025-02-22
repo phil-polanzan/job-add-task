@@ -4,10 +4,10 @@ namespace App\ModelProperties;
 
 class JobHour extends Numeric
 {
-	const UNIT_QUARTER_HOUR = 0.25;
-	const UNIT_HALF_HOUR = 0.5;
-	const UNIT_HOUR = 1;
-	const UNITS = [
+	const float UNIT_QUARTER_HOUR = 0.25;
+	const float UNIT_HALF_HOUR = 0.5;
+	const int UNIT_HOUR = 1;
+	const array UNITS = [
 		self::UNIT_QUARTER_HOUR,
 		self::UNIT_HALF_HOUR,
 		self::UNIT_HOUR

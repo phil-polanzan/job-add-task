@@ -6,7 +6,7 @@ use DateTime;
 
 class Date extends Property
 {
-	const FORMAT_STD = 'Y-m-d';
+	const string FORMAT_STD = 'Y-m-d';
 
 	public function __construct(string $name, bool $emptyValueAllowed = true)
 	{

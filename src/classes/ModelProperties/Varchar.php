@@ -4,7 +4,7 @@ namespace App\ModelProperties;
 
 class Varchar extends Property
 {
-	const MAX_LENGTH = 255;
+	const int MAX_LENGTH = 255;
 
 	private int $length;
 

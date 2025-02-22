@@ -4,9 +4,9 @@ namespace App\ModelProperties;
 
 class Numeric extends Property
 {
-	const TYPE_FLOAT = 'float';
-	const TYPE_INT = 'integer';
-	const TYPES = [
+	const string TYPE_FLOAT = 'float';
+	const string TYPE_INT = 'integer';
+	const array TYPES = [
 		self::TYPE_FLOAT,
 		self::TYPE_INT
 	];

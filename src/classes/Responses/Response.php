@@ -4,8 +4,8 @@ namespace App\Responses;
 
 class Response
 {
-	const STATUS_ERROR = 'Error';
-	const STATUS_SUCCESS = 'Success';
+	const string STATUS_ERROR = 'Error';
+	const string STATUS_SUCCESS = 'Success';
 
 	private string $status;
 	private string $message;
