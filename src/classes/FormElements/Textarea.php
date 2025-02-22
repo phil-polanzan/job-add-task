@@ -8,9 +8,7 @@ class Textarea extends VariableFormElement
 	{
 		parent::__construct($name, $label);
 		$this->addAttributeKeys(['maxlength', 'value']);
-		$this->addAttributes([
-			'value' => $value
-		]);
+		$this->addAttributes(['value' => $value]);
 		$this->templateFile = 'textarea.php';
 	}
 }
