@@ -6,7 +6,7 @@ class Textarea extends VariableFormElement
 {
 	public function __construct(string $name, ?string $label, $value = null)
 	{
-		parent::__construct($name, $label, $value);
+		parent::__construct($name, $label);
 		$this->addAttributeKeys(['maxlength', 'value']);
 		$this->addAttributes([
 			'value' => $value
