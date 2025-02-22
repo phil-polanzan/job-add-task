@@ -6,7 +6,7 @@ use App\Exceptions\HtmlElementException;
 
 abstract class HtmlElement
 {
-	private string $label;
+	private readonly string $label;
 	private array $attributeKeys = ['class', 'id'];
 	private ?string $templateFile = null;
 	private array $attributes = [

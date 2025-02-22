@@ -6,7 +6,7 @@ use App\FormElements\HiddenInput;
 
 class AjaxPostForm extends Form
 {
-	private string $controllerName;
+	private readonly string $controllerName;
 
 	public function __construct(string $label, ?string $controllerName = null)
 	{

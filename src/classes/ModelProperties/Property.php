@@ -6,8 +6,8 @@ use App\Exceptions\ModelPropertyException;
 
 abstract class Property
 {
-	private string $name;
-	private bool $emptyValueAllowed;
+	private readonly string $name;
+	private readonly bool $emptyValueAllowed;
 	private $value;
 
 	public function __construct(string $name, bool $emptyValueAllowed = true)
