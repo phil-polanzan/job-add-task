@@ -19,9 +19,9 @@ class PostRequest extends Request
 			}
 
 			$this->setMessage('Data submitted successfully');
-		} catch (ClassNotFoundException $e) {
+		} catch (ClassNotFoundException) {
 			$this->setMessage('Unexpected Error');
-		} catch (Exception $e) {
+		} catch (Exception) {
 			$this->setMessage('Submitted values not valid');
 		}
 	}
