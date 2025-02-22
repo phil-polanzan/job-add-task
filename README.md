@@ -24,7 +24,7 @@ Additional Guidelines:
 - Unit tests are not a requirement of this task but would be welcomed if included.
 
 ## Requirements
-PHP minimum version is PHP **>=8.2**.
+PHP minimum version is PHP **>=8.3**.
 
 Set a custom url for your development environment.
 
