@@ -13,12 +13,12 @@ class Form extends HtmlElement
 
 	private array $elements;
 
-	public function __construct(string $label, string $action, ?string $method = null)
+	public function __construct(string $label, string $action, string $method = self::METHOD_GET)
 	{
 		parent::__construct($label);
 		$this->addAttributeKeys(['method', 'action', 'data-form-tag']);
 		$this->addAttributes([
-			'method' => $method ?? self::METHOD_GET,
+			'method' => strtoupper($method),
 			'action' => ROOT_URL . "/$action",
 			'data-form-tag' => $this->getFormTagAttribute()
 		]);
