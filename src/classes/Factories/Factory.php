@@ -6,11 +6,6 @@ use App\Exceptions\ClassNotFoundException;
 
 abstract class Factory
 {
-	protected static function getClassName(string $formType): string
-	{
-		return implode('', array_map('ucfirst', array_map('strtolower', explode('-', $formType))));
-	}
-
 	protected abstract static function getNameSpace(): string;
 
 	/**
@@ -19,7 +14,7 @@ abstract class Factory
 	public static function getInstance(string $tag, array $objArgs = [])
 	{
 		$nameSpace = static::getNameSpace();
-		$className = $nameSpace . '\\' . static::getClassName($tag);
+		$className = $nameSpace . '\\' . implode('', array_map('ucfirst', array_map('strtolower', explode('-', $tag))));
 
 		if (!class_exists($className)) {
 			$class = explode('\\', $nameSpace);
