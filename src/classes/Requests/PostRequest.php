@@ -12,7 +12,7 @@ class PostRequest extends Request
 	{
 		try {
 			$controller = ControllerFactory::getInstance($args['controller'] ?? null);
-			$this->setRequestOk($controller->processed($_POST));
+			$this->setRequestOk($controller->processed($args));
 
 			if (!$this->getRequestOk()) {
 				throw new Exception('Model validation error');
