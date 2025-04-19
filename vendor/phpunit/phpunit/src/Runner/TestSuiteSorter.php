@@ -136,7 +136,7 @@ final class TestSuiteSorter
 
     private function sort(TestSuite $suite, int $order, bool $resolveDependencies, int $orderDefects): void
     {
-        if (empty($suite->tests())) {
+        if ($suite->tests() === []) {
             return;
         }
 
@@ -212,7 +212,7 @@ final class TestSuiteSorter
     {
         usort(
             $tests,
-            fn ($left, $right) => $this->cmpDefectPriorityAndTime($left, $right),
+            fn (Test $left, Test $right) => $this->cmpDefectPriorityAndTime($left, $right),
         );
 
         return $tests;
@@ -227,7 +227,7 @@ final class TestSuiteSorter
     {
         usort(
             $tests,
-            fn ($left, $right) => $this->cmpDuration($left, $right),
+            fn (Test $left, Test $right) => $this->cmpDuration($left, $right),
         );
 
         return $tests;
@@ -242,7 +242,7 @@ final class TestSuiteSorter
     {
         usort(
             $tests,
-            fn ($left, $right) => $this->cmpSize($left, $right),
+            fn (Test $left, Test $right) => $this->cmpSize($left, $right),
         );
 
         return $tests;
@@ -264,12 +264,12 @@ final class TestSuiteSorter
         $priorityA = $this->defectSortOrder[$a->sortId()] ?? 0;
         $priorityB = $this->defectSortOrder[$b->sortId()] ?? 0;
 
-        if ($priorityB <=> $priorityA) {
+        if (($priorityB <=> $priorityA) > 0) {
             // Sort defect weight descending
             return $priorityB <=> $priorityA;
         }
 
-        if ($priorityA || $priorityB) {
+        if ($priorityA > 0 || $priorityB > 0) {
             return $this->cmpDuration($a, $b);
         }
 
@@ -333,7 +333,7 @@ final class TestSuiteSorter
             } else {
                 $i++;
             }
-        } while (!empty($tests) && ($i < count($tests)));
+        } while ($tests !== [] && ($i < count($tests)));
 
         return array_merge($newTestOrder, $tests);
     }

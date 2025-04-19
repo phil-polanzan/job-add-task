@@ -132,7 +132,7 @@ final readonly class Loader
         $junit   = null;
         $element = $this->element($xpath, 'logging/junit');
 
-        if ($element) {
+        if ($element !== null) {
             $junit = new Junit(
                 new File(
                     $this->toAbsolutePath(
@@ -146,7 +146,7 @@ final readonly class Loader
         $teamCity = null;
         $element  = $this->element($xpath, 'logging/teamcity');
 
-        if ($element) {
+        if ($element !== null) {
             $teamCity = new TeamCity(
                 new File(
                     $this->toAbsolutePath(
@@ -160,7 +160,7 @@ final readonly class Loader
         $testDoxHtml = null;
         $element     = $this->element($xpath, 'logging/testdoxHtml');
 
-        if ($element) {
+        if ($element !== null) {
             $testDoxHtml = new TestDoxHtml(
                 new File(
                     $this->toAbsolutePath(
@@ -174,7 +174,7 @@ final readonly class Loader
         $testDoxText = null;
         $element     = $this->element($xpath, 'logging/testdoxText');
 
-        if ($element) {
+        if ($element !== null) {
             $testDoxText = new TestDoxText(
                 new File(
                     $this->toAbsolutePath(
@@ -249,7 +249,7 @@ final readonly class Loader
         //  - C:/windows
         //  - c:/windows
         if (defined('PHP_WINDOWS_VERSION_BUILD') &&
-            !empty($path) &&
+            $path !== '' &&
             ($path[0] === '\\' || (strlen($path) >= 3 && preg_match('#^[A-Z]:[/\\\]#i', substr($path, 0, 3))))) {
             return $path;
         }
@@ -279,7 +279,7 @@ final readonly class Loader
 
         $element = $this->element($xpath, 'source');
 
-        if ($element) {
+        if ($element !== null) {
             $baseline = $this->parseStringAttribute($element, 'baseline');
 
             if ($baseline !== null) {
@@ -357,7 +357,7 @@ final readonly class Loader
 
         $element = $this->element($xpath, 'coverage');
 
-        if ($element) {
+        if ($element !== null) {
             $pathCoverage = $this->parseBooleanAttribute(
                 $element,
                 'pathCoverage',
@@ -386,7 +386,7 @@ final readonly class Loader
         $clover  = null;
         $element = $this->element($xpath, 'coverage/report/clover');
 
-        if ($element) {
+        if ($element !== null) {
             $clover = new Clover(
                 new File(
                     $this->toAbsolutePath(
@@ -400,7 +400,7 @@ final readonly class Loader
         $cobertura = null;
         $element   = $this->element($xpath, 'coverage/report/cobertura');
 
-        if ($element) {
+        if ($element !== null) {
             $cobertura = new Cobertura(
                 new File(
                     $this->toAbsolutePath(
@@ -414,7 +414,7 @@ final readonly class Loader
         $crap4j  = null;
         $element = $this->element($xpath, 'coverage/report/crap4j');
 
-        if ($element) {
+        if ($element !== null) {
             $crap4j = new Crap4j(
                 new File(
                     $this->toAbsolutePath(
@@ -429,7 +429,7 @@ final readonly class Loader
         $html    = null;
         $element = $this->element($xpath, 'coverage/report/html');
 
-        if ($element) {
+        if ($element !== null) {
             $defaultColors     = Colors::default();
             $defaultThresholds = Thresholds::default();
 
@@ -454,7 +454,7 @@ final readonly class Loader
         $php     = null;
         $element = $this->element($xpath, 'coverage/report/php');
 
-        if ($element) {
+        if ($element !== null) {
             $php = new CodeCoveragePhp(
                 new File(
                     $this->toAbsolutePath(
@@ -468,7 +468,7 @@ final readonly class Loader
         $text    = null;
         $element = $this->element($xpath, 'coverage/report/text');
 
-        if ($element) {
+        if ($element !== null) {
             $text = new CodeCoverageText(
                 new File(
                     $this->toAbsolutePath(
@@ -484,7 +484,7 @@ final readonly class Loader
         $xml     = null;
         $element = $this->element($xpath, 'coverage/report/xml');
 
-        if ($element) {
+        if ($element !== null) {
             $xml = new CodeCoverageXml(
                 new Directory(
                     $this->toAbsolutePath(
@@ -549,7 +549,7 @@ final readonly class Loader
 
             $directoryPath = $directoryNode->textContent;
 
-            if (!$directoryPath) {
+            if ($directoryPath === '') {
                 continue;
             }
 
@@ -576,7 +576,7 @@ final readonly class Loader
 
             $filePath = $fileNode->textContent;
 
-            if ($filePath) {
+            if ($filePath !== '') {
                 $files[] = new File($this->toAbsolutePath($filename, $filePath));
             }
         }
@@ -679,7 +679,7 @@ final readonly class Loader
 
             $path = $includePath->textContent;
 
-            if ($path) {
+            if ($path !== '') {
                 $includePaths[] = new Directory($this->toAbsolutePath($filename, $path));
             }
         }
@@ -877,6 +877,7 @@ final readonly class Loader
             $this->parseBooleanAttribute($document->documentElement, 'displayDetailsOnSkippedTests', false),
             $this->parseBooleanAttribute($document->documentElement, 'displayDetailsOnTestsThatTriggerDeprecations', false),
             $this->parseBooleanAttribute($document->documentElement, 'displayDetailsOnPhpunitDeprecations', false),
+            $this->parseBooleanAttribute($document->documentElement, 'displayDetailsOnPhpunitNotices', false),
             $this->parseBooleanAttribute($document->documentElement, 'displayDetailsOnTestsThatTriggerErrors', false),
             $this->parseBooleanAttribute($document->documentElement, 'displayDetailsOnTestsThatTriggerNotices', false),
             $this->parseBooleanAttribute($document->documentElement, 'displayDetailsOnTestsThatTriggerWarnings', false),
@@ -886,6 +887,7 @@ final readonly class Loader
             $this->parseBooleanAttribute($document->documentElement, 'processIsolation', false),
             $this->parseBooleanAttribute($document->documentElement, 'failOnDeprecation', false),
             $this->parseBooleanAttribute($document->documentElement, 'failOnPhpunitDeprecation', false),
+            $this->parseBooleanAttribute($document->documentElement, 'failOnPhpunitNotice', false),
             $this->parseBooleanAttribute($document->documentElement, 'failOnEmptyTestSuite', false),
             $this->parseBooleanAttribute($document->documentElement, 'failOnIncomplete', false),
             $this->parseBooleanAttribute($document->documentElement, 'failOnNotice', false),
@@ -967,7 +969,7 @@ final readonly class Loader
             foreach ($element->getElementsByTagName('exclude') as $excludeNode) {
                 $excludeFile = $excludeNode->textContent;
 
-                if ($excludeFile) {
+                if ($excludeFile !== '') {
                     $exclude[] = new File($this->toAbsolutePath($filename, $excludeFile));
                 }
             }
@@ -979,7 +981,7 @@ final readonly class Loader
 
                 $directory = $directoryNode->textContent;
 
-                if (empty($directory)) {
+                if ($directory === '') {
                     continue;
                 }
 
@@ -1013,7 +1015,7 @@ final readonly class Loader
                     foreach (explode(',', $directoryNode->getAttribute('groups')) as $group) {
                         $group = trim($group);
 
-                        if (empty($group)) {
+                        if ($group === '') {
                             continue;
                         }
 
@@ -1038,7 +1040,7 @@ final readonly class Loader
 
                 $file = $fileNode->textContent;
 
-                if (empty($file)) {
+                if ($file === '') {
                     continue;
                 }
 
@@ -1060,7 +1062,7 @@ final readonly class Loader
                     foreach (explode(',', $fileNode->getAttribute('groups')) as $group) {
                         $group = trim($group);
 
-                        if (empty($group)) {
+                        if ($group === '') {
                             continue;
                         }
 
@@ -1078,7 +1080,7 @@ final readonly class Loader
 
             $name = $element->getAttribute('name');
 
-            assert(!empty($name));
+            assert($name !== '');
 
             $testSuites[] = new TestSuiteConfiguration(
                 $name,

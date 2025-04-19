@@ -224,7 +224,7 @@ final class PhptTestCase implements Reorderable, SelfDescribing, Test
             } elseif ($e instanceof ExpectationFailedException) {
                 $comparisonFailure = $e->getComparisonFailure();
 
-                if ($comparisonFailure) {
+                if ($comparisonFailure !== null) {
                     $diff = $comparisonFailure->getDiff();
                 } else {
                     $diff = $e->getMessage();
@@ -238,7 +238,7 @@ final class PhptTestCase implements Reorderable, SelfDescribing, Test
                     (string) $trace[0]['file'],
                     (int) $trace[0]['line'],
                     $trace,
-                    $comparisonFailure ? $diff : '',
+                    $comparisonFailure !== null ? $diff : '',
                 );
             }
 
@@ -297,7 +297,7 @@ final class PhptTestCase implements Reorderable, SelfDescribing, Test
 
     public function hasOutput(): bool
     {
-        return !empty($this->output);
+        return $this->output !== '';
     }
 
     public function sortId(): string
@@ -405,6 +405,7 @@ final class PhptTestCase implements Reorderable, SelfDescribing, Test
                 $sectionContent = preg_replace('/\r\n/', "\n", trim($sections[$sectionName]));
                 $expected       = $sectionName === 'EXPECTREGEX' ? "/{$sectionContent}/" : $sectionContent;
 
+                /** @phpstan-ignore staticMethod.dynamicName */
                 Assert::$sectionAssertion($expected, $actual);
 
                 return;
@@ -440,7 +441,7 @@ final class PhptTestCase implements Reorderable, SelfDescribing, Test
             $output = $this->runCodeInLocalSandbox($skipIfCode);
         }
 
-        if (!strncasecmp('skip', ltrim($output), 4)) {
+        if (strncasecmp('skip', ltrim($output), 4) === 0) {
             $message = '';
 
             if (preg_match('/^\s*skip\s*(.+)\s*/i', $output, $skipMatch)) {
@@ -569,7 +570,7 @@ final class PhptTestCase implements Reorderable, SelfDescribing, Test
                 continue;
             }
 
-            if (empty($section)) {
+            if ($section === '') {
                 throw new InvalidPhptFileException;
             }
 
@@ -587,9 +588,9 @@ final class PhptTestCase implements Reorderable, SelfDescribing, Test
             throw new InvalidPhptFileException;
         }
 
-        foreach ($unsupportedSections as $section) {
-            if (isset($sections[$section])) {
-                throw new UnsupportedPhptSectionException($section);
+        foreach ($unsupportedSections as $unsupportedSection) {
+            if (isset($sections[$unsupportedSection])) {
+                throw new UnsupportedPhptSectionException($unsupportedSection);
             }
         }
 
@@ -854,7 +855,7 @@ final class PhptTestCase implements Reorderable, SelfDescribing, Test
                 }
             }
 
-            if (!empty($line)) {
+            if ($line !== '') {
                 $previousLine = $line;
             }
         }
@@ -880,7 +881,7 @@ final class PhptTestCase implements Reorderable, SelfDescribing, Test
     {
         $needle = trim($needle);
 
-        if (empty($needle)) {
+        if ($needle === '') {
             return [[
                 'file' => realpath($this->filename),
                 'line' => 1,

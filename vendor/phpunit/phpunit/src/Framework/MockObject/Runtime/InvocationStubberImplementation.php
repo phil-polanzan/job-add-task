@@ -61,185 +61,15 @@ final class InvocationStubberImplementation implements InvocationStubber
     }
 
     /**
-     * @throws MatcherAlreadyRegisteredException
+     * @param Constraint|non-empty-string|PropertyHook $constraint
      *
-     * @return $this
-     */
-    public function id(string $id): self
-    {
-        $this->invocationHandler->registerMatcher($id, $this->matcher);
-
-        return $this;
-    }
-
-    /**
-     * @return $this
-     */
-    public function will(Stub $stub): self
-    {
-        $this->matcher->setStub($stub);
-
-        return $this;
-    }
-
-    /**
-     * @throws IncompatibleReturnValueException
-     */
-    public function willReturn(mixed $value, mixed ...$nextValues): self
-    {
-        if (count($nextValues) === 0) {
-            $this->ensureTypeOfReturnValues([$value]);
-
-            $stub = $value instanceof Stub ? $value : new ReturnStub($value);
-
-            return $this->will($stub);
-        }
-
-        $values = array_merge([$value], $nextValues);
-
-        $this->ensureTypeOfReturnValues($values);
-
-        $stub = new ConsecutiveCalls($values);
-
-        return $this->will($stub);
-    }
-
-    public function willReturnReference(mixed &$reference): self
-    {
-        $stub = new ReturnReference($reference);
-
-        return $this->will($stub);
-    }
-
-    public function willReturnMap(array $valueMap): self
-    {
-        $method = $this->configuredMethod();
-
-        assert($method instanceof ConfigurableMethod);
-
-        $numberOfParameters = $method->numberOfParameters();
-        $defaultValues      = $method->defaultParameterValues();
-        $hasDefaultValues   = !empty($defaultValues);
-
-        $_valueMap = [];
-
-        foreach ($valueMap as $mapping) {
-            $numberOfConfiguredParameters = count($mapping) - 1;
-
-            if ($numberOfConfiguredParameters === $numberOfParameters || !$hasDefaultValues) {
-                $_valueMap[] = $mapping;
-
-                continue;
-            }
-
-            $_mapping    = [];
-            $returnValue = array_pop($mapping);
-
-            foreach (range(0, $numberOfParameters - 1) as $i) {
-                if (isset($mapping[$i])) {
-                    $_mapping[] = $mapping[$i];
-
-                    continue;
-                }
-
-                if (isset($defaultValues[$i])) {
-                    $_mapping[] = $defaultValues[$i];
-                }
-            }
-
-            $_mapping[]  = $returnValue;
-            $_valueMap[] = $_mapping;
-        }
-
-        $stub = new ReturnValueMap($_valueMap);
-
-        return $this->will($stub);
-    }
-
-    public function willReturnArgument(int $argumentIndex): self
-    {
-        $stub = new ReturnArgument($argumentIndex);
-
-        return $this->will($stub);
-    }
-
-    public function willReturnCallback(callable $callback): self
-    {
-        $stub = new ReturnCallback($callback);
-
-        return $this->will($stub);
-    }
-
-    public function willReturnSelf(): self
-    {
-        $stub = new ReturnSelf;
-
-        return $this->will($stub);
-    }
-
-    public function willReturnOnConsecutiveCalls(mixed ...$values): self
-    {
-        $stub = new ConsecutiveCalls($values);
-
-        return $this->will($stub);
-    }
-
-    public function willThrowException(Throwable $exception): self
-    {
-        $stub = new Exception($exception);
-
-        return $this->will($stub);
-    }
-
-    /**
-     * @return $this
-     */
-    public function after(string $id): self
-    {
-        $this->matcher->setAfterMatchBuilderId($id);
-
-        return $this;
-    }
-
-    /**
-     * @throws \PHPUnit\Framework\Exception
-     * @throws MethodNameNotConfiguredException
-     * @throws MethodParametersAlreadyConfiguredException
-     *
-     * @return $this
-     */
-    public function with(mixed ...$arguments): self
-    {
-        $this->ensureParametersCanBeConfigured();
-
-        $this->matcher->setParametersRule(new Rule\Parameters($arguments));
-
-        return $this;
-    }
-
-    /**
-     * @throws MethodNameNotConfiguredException
-     * @throws MethodParametersAlreadyConfiguredException
-     *
-     * @return $this
-     */
-    public function withAnyParameters(): self
-    {
-        $this->ensureParametersCanBeConfigured();
-
-        $this->matcher->setParametersRule(new Rule\AnyParameters);
-
-        return $this;
-    }
-
-    /**
      * @throws InvalidArgumentException
      * @throws MethodCannotBeConfiguredException
      * @throws MethodNameAlreadyConfiguredException
      *
      * @return $this
      */
-    public function method(Constraint|PropertyHook|string $constraint): self
+    public function method(Constraint|PropertyHook|string $constraint): InvocationStubber
     {
         if ($this->matcher->hasMethodNameRule()) {
             throw new MethodNameAlreadyConfiguredException;
@@ -265,6 +95,182 @@ final class InvocationStubberImplementation implements InvocationStubber
         $this->matcher->setMethodNameRule(new Rule\MethodName($constraint));
 
         return $this;
+    }
+
+    /**
+     * @param non-empty-string $id
+     *
+     * @throws MatcherAlreadyRegisteredException
+     *
+     * @return $this
+     */
+    public function id(string $id): InvocationStubber
+    {
+        $this->invocationHandler->registerMatcher($id, $this->matcher);
+
+        return $this;
+    }
+
+    /**
+     * @param non-empty-string $id
+     *
+     * @return $this
+     */
+    public function after(string $id): InvocationStubber
+    {
+        $this->matcher->setAfterMatchBuilderId($id);
+
+        return $this;
+    }
+
+    /**
+     * @throws \PHPUnit\Framework\Exception
+     * @throws MethodNameNotConfiguredException
+     * @throws MethodParametersAlreadyConfiguredException
+     *
+     * @return $this
+     */
+    public function with(mixed ...$arguments): InvocationStubber
+    {
+        $this->ensureParametersCanBeConfigured();
+
+        $this->matcher->setParametersRule(new Rule\Parameters($arguments));
+
+        return $this;
+    }
+
+    /**
+     * @throws MethodNameNotConfiguredException
+     * @throws MethodParametersAlreadyConfiguredException
+     *
+     * @return $this
+     */
+    public function withAnyParameters(): InvocationStubber
+    {
+        $this->ensureParametersCanBeConfigured();
+
+        $this->matcher->setParametersRule(new Rule\AnyParameters);
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function will(Stub $stub): InvocationStubber
+    {
+        $this->matcher->setStub($stub);
+
+        return $this;
+    }
+
+    /**
+     * @throws IncompatibleReturnValueException
+     */
+    public function willReturn(mixed $value, mixed ...$nextValues): InvocationStubber
+    {
+        if (count($nextValues) === 0) {
+            $this->ensureTypeOfReturnValues([$value]);
+
+            $stub = $value instanceof Stub ? $value : new ReturnStub($value);
+
+            return $this->will($stub);
+        }
+
+        $values = array_merge([$value], $nextValues);
+
+        $this->ensureTypeOfReturnValues($values);
+
+        $stub = new ConsecutiveCalls($values);
+
+        return $this->will($stub);
+    }
+
+    public function willReturnReference(mixed &$reference): InvocationStubber
+    {
+        $stub = new ReturnReference($reference);
+
+        return $this->will($stub);
+    }
+
+    public function willReturnMap(array $valueMap): InvocationStubber
+    {
+        $method = $this->configuredMethod();
+
+        assert($method instanceof ConfigurableMethod);
+
+        $numberOfParameters = $method->numberOfParameters();
+        $defaultValues      = $method->defaultParameterValues();
+        $hasDefaultValues   = $defaultValues !== [];
+
+        $_valueMap = [];
+
+        foreach ($valueMap as $mapping) {
+            $numberOfConfiguredParameters = count($mapping) - 1;
+
+            if ($numberOfConfiguredParameters === $numberOfParameters || !$hasDefaultValues) {
+                $_valueMap[] = $mapping;
+
+                continue;
+            }
+
+            $_mapping    = [];
+            $returnValue = array_pop($mapping);
+
+            foreach (range(0, $numberOfParameters - 1) as $i) {
+                if (array_key_exists($i, $mapping)) {
+                    $_mapping[] = $mapping[$i];
+
+                    continue;
+                }
+
+                if (array_key_exists($i, $defaultValues)) {
+                    $_mapping[] = $defaultValues[$i];
+                }
+            }
+
+            $_mapping[]  = $returnValue;
+            $_valueMap[] = $_mapping;
+        }
+
+        $stub = new ReturnValueMap($_valueMap);
+
+        return $this->will($stub);
+    }
+
+    public function willReturnArgument(int $argumentIndex): InvocationStubber
+    {
+        $stub = new ReturnArgument($argumentIndex);
+
+        return $this->will($stub);
+    }
+
+    public function willReturnCallback(callable $callback): InvocationStubber
+    {
+        $stub = new ReturnCallback($callback);
+
+        return $this->will($stub);
+    }
+
+    public function willReturnSelf(): InvocationStubber
+    {
+        $stub = new ReturnSelf;
+
+        return $this->will($stub);
+    }
+
+    public function willReturnOnConsecutiveCalls(mixed ...$values): InvocationStubber
+    {
+        $stub = new ConsecutiveCalls($values);
+
+        return $this->will($stub);
+    }
+
+    public function willThrowException(Throwable $exception): InvocationStubber
+    {
+        $stub = new Exception($exception);
+
+        return $this->will($stub);
     }
 
     /**

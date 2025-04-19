@@ -9,6 +9,7 @@
  */
 namespace PHPUnit\Util;
 
+use const JSON_ERROR_NONE;
 use const JSON_PRETTY_PRINT;
 use const JSON_UNESCAPED_SLASHES;
 use const JSON_UNESCAPED_UNICODE;
@@ -35,7 +36,7 @@ final readonly class Json
     {
         $decodedJson = json_decode($json, false);
 
-        if (json_last_error()) {
+        if (json_last_error() !== JSON_ERROR_NONE) {
             throw new InvalidJsonException;
         }
 
@@ -57,7 +58,7 @@ final readonly class Json
     {
         $decodedJson = json_decode($json);
 
-        if (json_last_error()) {
+        if (json_last_error() !== JSON_ERROR_NONE) {
             return [true, null];
         }
 
@@ -76,8 +77,7 @@ final readonly class Json
      */
     private static function recursiveSort(mixed &$json): void
     {
-        // Nulls, empty arrays, and scalars need no further handling.
-        if (!$json || is_scalar($json)) {
+        if ($json === null || $json === [] || is_scalar($json)) {
             return;
         }
 

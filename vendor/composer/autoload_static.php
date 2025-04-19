@@ -12,6 +12,10 @@ class ComposerStaticInit7841dc86727d9dc0d5a633c5c6a55b99
     );
 
     public static $prefixLengthsPsr4 = array (
+        'U' => 
+        array (
+            'Unittests\\' => 10,
+        ),
         'P' => 
         array (
             'PhpParser\\' => 10,
@@ -27,6 +31,10 @@ class ComposerStaticInit7841dc86727d9dc0d5a633c5c6a55b99
     );
 
     public static $prefixDirsPsr4 = array (
+        'Unittests\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/unittests',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -143,8 +151,14 @@ class ComposerStaticInit7841dc86727d9dc0d5a633c5c6a55b99
         'PHPUnit\\Event\\TestRunner\\GarbageCollectionEnabledSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/TestRunner/GarbageCollectionEnabledSubscriber.php',
         'PHPUnit\\Event\\TestRunner\\GarbageCollectionTriggered' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/TestRunner/GarbageCollectionTriggered.php',
         'PHPUnit\\Event\\TestRunner\\GarbageCollectionTriggeredSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/TestRunner/GarbageCollectionTriggeredSubscriber.php',
+        'PHPUnit\\Event\\TestRunner\\NoticeTriggered' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/TestRunner/NoticeTriggered.php',
+        'PHPUnit\\Event\\TestRunner\\NoticeTriggeredSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/TestRunner/NoticeTriggeredSubscriber.php',
         'PHPUnit\\Event\\TestRunner\\Started' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/TestRunner/Started.php',
         'PHPUnit\\Event\\TestRunner\\StartedSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/TestRunner/StartedSubscriber.php',
+        'PHPUnit\\Event\\TestRunner\\StaticAnalysisForCodeCoverageFinished' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/TestRunner/StaticAnalysisForCodeCoverageFinished.php',
+        'PHPUnit\\Event\\TestRunner\\StaticAnalysisForCodeCoverageFinishedSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/TestRunner/StaticAnalysisForCodeCoverageFinishedSubscriber.php',
+        'PHPUnit\\Event\\TestRunner\\StaticAnalysisForCodeCoverageStarted' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/TestRunner/StaticAnalysisForCodeCoverageStarted.php',
+        'PHPUnit\\Event\\TestRunner\\StaticAnalysisForCodeCoverageStartedSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/TestRunner/StaticAnalysisForCodeCoverageStartedSubscriber.php',
         'PHPUnit\\Event\\TestRunner\\WarningTriggered' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/TestRunner/WarningTriggered.php',
         'PHPUnit\\Event\\TestRunner\\WarningTriggeredSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/TestRunner/WarningTriggeredSubscriber.php',
         'PHPUnit\\Event\\TestSuite\\Filtered' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/TestSuite/Filtered.php',
@@ -229,6 +243,8 @@ class ComposerStaticInit7841dc86727d9dc0d5a633c5c6a55b99
         'PHPUnit\\Event\\Test\\PhpunitDeprecationTriggeredSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/Test/Issue/PhpunitDeprecationTriggeredSubscriber.php',
         'PHPUnit\\Event\\Test\\PhpunitErrorTriggered' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/Test/Issue/PhpunitErrorTriggered.php',
         'PHPUnit\\Event\\Test\\PhpunitErrorTriggeredSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/Test/Issue/PhpunitErrorTriggeredSubscriber.php',
+        'PHPUnit\\Event\\Test\\PhpunitNoticeTriggered' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/Test/Issue/PhpunitNoticeTriggered.php',
+        'PHPUnit\\Event\\Test\\PhpunitNoticeTriggeredSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/Test/Issue/PhpunitNoticeTriggeredSubscriber.php',
         'PHPUnit\\Event\\Test\\PhpunitWarningTriggered' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/Test/Issue/PhpunitWarningTriggered.php',
         'PHPUnit\\Event\\Test\\PhpunitWarningTriggeredSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/Test/Issue/PhpunitWarningTriggeredSubscriber.php',
         'PHPUnit\\Event\\Test\\PostConditionCalled' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/Test/HookMethod/PostConditionCalled.php',
@@ -332,9 +348,9 @@ class ComposerStaticInit7841dc86727d9dc0d5a633c5c6a55b99
         'PHPUnit\\Framework\\Attributes\\UsesMethod' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Attributes/UsesMethod.php',
         'PHPUnit\\Framework\\Attributes\\UsesNamespace' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Attributes/UsesNamespace.php',
         'PHPUnit\\Framework\\Attributes\\UsesTrait' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Attributes/UsesTrait.php',
+        'PHPUnit\\Framework\\Attributes\\WithEnvironmentVariable' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Attributes/WithEnvironmentVariable.php',
         'PHPUnit\\Framework\\Attributes\\WithoutErrorHandler' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Attributes/WithoutErrorHandler.php',
         'PHPUnit\\Framework\\ChildProcessResultProcessor' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/TestRunner/ChildProcessResultProcessor.php',
-        'PHPUnit\\Framework\\CodeCoverageException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/CodeCoverageException.php',
         'PHPUnit\\Framework\\ComparisonMethodDoesNotAcceptParameterTypeException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/ObjectEquals/ComparisonMethodDoesNotAcceptParameterTypeException.php',
         'PHPUnit\\Framework\\ComparisonMethodDoesNotDeclareBoolReturnTypeException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/ObjectEquals/ComparisonMethodDoesNotDeclareBoolReturnTypeException.php',
         'PHPUnit\\Framework\\ComparisonMethodDoesNotDeclareExactlyOneParameterException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/ObjectEquals/ComparisonMethodDoesNotDeclareExactlyOneParameterException.php',
@@ -401,7 +417,6 @@ class ComposerStaticInit7841dc86727d9dc0d5a633c5c6a55b99
         'PHPUnit\\Framework\\IncompleteTest' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/Incomplete/IncompleteTest.php',
         'PHPUnit\\Framework\\IncompleteTestError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/Incomplete/IncompleteTestError.php',
         'PHPUnit\\Framework\\InvalidArgumentException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/InvalidArgumentException.php',
-        'PHPUnit\\Framework\\InvalidCoversTargetException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/InvalidCoversTargetException.php',
         'PHPUnit\\Framework\\InvalidDataProviderException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/InvalidDataProviderException.php',
         'PHPUnit\\Framework\\InvalidDependencyException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/InvalidDependencyException.php',
         'PHPUnit\\Framework\\IsolatedTestRunner' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/TestRunner/IsolatedTestRunner.php',
@@ -638,7 +653,9 @@ class ComposerStaticInit7841dc86727d9dc0d5a633c5c6a55b99
         'PHPUnit\\Metadata\\Version\\ComparisonRequirement' => __DIR__ . '/..' . '/phpunit/phpunit/src/Metadata/Version/ComparisonRequirement.php',
         'PHPUnit\\Metadata\\Version\\ConstraintRequirement' => __DIR__ . '/..' . '/phpunit/phpunit/src/Metadata/Version/ConstraintRequirement.php',
         'PHPUnit\\Metadata\\Version\\Requirement' => __DIR__ . '/..' . '/phpunit/phpunit/src/Metadata/Version/Requirement.php',
+        'PHPUnit\\Metadata\\WithEnvironmentVariable' => __DIR__ . '/..' . '/phpunit/phpunit/src/Metadata/WithEnvironmentVariable.php',
         'PHPUnit\\Metadata\\WithoutErrorHandler' => __DIR__ . '/..' . '/phpunit/phpunit/src/Metadata/WithoutErrorHandler.php',
+        'PHPUnit\\Runner\\BackedUpEnvironmentVariable' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/BackedUpEnvironmentVariable.php',
         'PHPUnit\\Runner\\Baseline\\Baseline' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Baseline/Baseline.php',
         'PHPUnit\\Runner\\Baseline\\CannotLoadBaselineException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Baseline/Exception/CannotLoadBaselineException.php',
         'PHPUnit\\Runner\\Baseline\\FileDoesNotHaveLineException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Baseline/Exception/FileDoesNotHaveLineException.php',
@@ -728,6 +745,7 @@ class ComposerStaticInit7841dc86727d9dc0d5a633c5c6a55b99
         'PHPUnit\\TestRunner\\TestResult\\TestPreparedSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/TestResult/Subscriber/TestPreparedSubscriber.php',
         'PHPUnit\\TestRunner\\TestResult\\TestResult' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/TestResult/TestResult.php',
         'PHPUnit\\TestRunner\\TestResult\\TestRunnerTriggeredDeprecationSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/TestResult/Subscriber/TestRunnerTriggeredDeprecationSubscriber.php',
+        'PHPUnit\\TestRunner\\TestResult\\TestRunnerTriggeredNoticeSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/TestResult/Subscriber/TestRunnerTriggeredNoticeSubscriber.php',
         'PHPUnit\\TestRunner\\TestResult\\TestRunnerTriggeredWarningSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/TestResult/Subscriber/TestRunnerTriggeredWarningSubscriber.php',
         'PHPUnit\\TestRunner\\TestResult\\TestSkippedSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/TestResult/Subscriber/TestSkippedSubscriber.php',
         'PHPUnit\\TestRunner\\TestResult\\TestSuiteFinishedSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/TestResult/Subscriber/TestSuiteFinishedSubscriber.php',
@@ -741,6 +759,7 @@ class ComposerStaticInit7841dc86727d9dc0d5a633c5c6a55b99
         'PHPUnit\\TestRunner\\TestResult\\TestTriggeredPhpWarningSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/TestResult/Subscriber/TestTriggeredPhpWarningSubscriber.php',
         'PHPUnit\\TestRunner\\TestResult\\TestTriggeredPhpunitDeprecationSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/TestResult/Subscriber/TestTriggeredPhpunitDeprecationSubscriber.php',
         'PHPUnit\\TestRunner\\TestResult\\TestTriggeredPhpunitErrorSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/TestResult/Subscriber/TestTriggeredPhpunitErrorSubscriber.php',
+        'PHPUnit\\TestRunner\\TestResult\\TestTriggeredPhpunitNoticeSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/TestResult/Subscriber/TestTriggeredPhpunitNoticeSubscriber.php',
         'PHPUnit\\TestRunner\\TestResult\\TestTriggeredPhpunitWarningSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/TestResult/Subscriber/TestTriggeredPhpunitWarningSubscriber.php',
         'PHPUnit\\TestRunner\\TestResult\\TestTriggeredWarningSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/TestResult/Subscriber/TestTriggeredWarningSubscriber.php',
         'PHPUnit\\TextUI\\Application' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/Application.php',

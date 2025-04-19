@@ -745,7 +745,7 @@ final readonly class Application
     {
         $message = $t->getMessage();
 
-        if (empty(trim($message))) {
+        if (trim($message) === '') {
             $message = '(no message)';
         }
 
@@ -760,7 +760,7 @@ final readonly class Application
 
         $first = true;
 
-        if ($t->getPrevious()) {
+        if ($t->getPrevious() !== null) {
             $t = $t->getPrevious();
         }
 
