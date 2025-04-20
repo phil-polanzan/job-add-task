@@ -11,7 +11,9 @@ class PostRequest extends Request
 	public function exec(array $args) : void
 	{
 		try {
-			$controller = ControllerFactory::getInstance($args['controller'] ?? null);
+			$args['controller'] ??= null;
+			$controller = ControllerFactory::getInstance($args['controller']);
+			unset($args['controller']);
 			$this->setRequestOk($controller->processed($args));
 
 			if (!$this->getRequestOk()) {
