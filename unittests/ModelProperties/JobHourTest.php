@@ -3,7 +3,6 @@
 namespace Unittests\ModelProperties;
 
 use App\Exceptions\AppException;
-use App\Exceptions\ModelPropertyException;
 use App\ModelProperties\JobHour;
 
 class JobHourTest extends ModelPropertiesTest
