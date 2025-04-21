@@ -20,11 +20,12 @@ class Date extends Property
 
 	public function validate() : bool
 	{
-		$value = parent::validate() && !is_null(DateTime::createFromFormat(self::FORMAT_STD, $this->getValue()));
+		$dateObj = DateTime::createFromFormat(self::FORMAT_STD, $this->getValue());
+		$value = parent::validate() && !is_null($dateObj) && !empty($dateObj);
 
-		if (!empty($this->getValue())) {
+		if ($value && !empty($this->getValue())) {
 			$parts = explode('-', $this->getValue());
-			$value = $value && checkdate($parts[1], $parts[2], $parts[0]);
+			$value = checkdate($parts[1], $parts[2], $parts[0]);
 		}
 
 		return $value;
