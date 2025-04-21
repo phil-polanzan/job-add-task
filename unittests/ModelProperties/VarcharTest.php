@@ -13,7 +13,6 @@ class VarcharTest extends ModelPropertiesTest
 		} catch (AppException $e) {
 			$this->assertEqualsModelPropertyException($e);
 		}
-
 	}
 
 	public function testOutOfLength() : void {
