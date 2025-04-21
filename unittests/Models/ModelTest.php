@@ -17,7 +17,7 @@ class ModelTest extends TestCase
 				new Varchar('test', 10),
 				'random'
 			]);
-		} catch(AppException $e) {
+		} catch (AppException $e) {
 			$this->assertInstanceOf(ModelException::class, $e);
 		}
 	}
