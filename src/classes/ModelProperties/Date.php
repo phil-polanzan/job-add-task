@@ -20,15 +20,16 @@ class Date extends Property
 
 	public function validate() : bool
 	{
-		$dateObj = DateTime::createFromFormat(self::FORMAT_STD, $this->getValue());
-		$value = parent::validate() && !is_null($dateObj) && !empty($dateObj);
+		$value = $this->getValue();
+		$dateObj = DateTime::createFromFormat(self::FORMAT_STD, $value);
+		$ok = parent::validate() && !is_null($dateObj) && !empty($dateObj);
 
-		if ($value && !empty($this->getValue())) {
-			$parts = explode('-', $this->getValue());
-			$value = checkdate($parts[1], $parts[2], $parts[0]);
+		if ($ok && !empty($value)) {
+			$parts = explode('-', $value);
+			$ok = checkdate($parts[1], $parts[2], $parts[0]);
 		}
 
-		return $value;
+		return $ok;
 	}
 
 	public function notEmpty() : bool
