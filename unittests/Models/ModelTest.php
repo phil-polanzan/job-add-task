@@ -12,8 +12,8 @@ class ModelTest extends TestCase
 {
 	public function testNotValidProperty() : void {
 		try {
-			$object = new Model();
-			$object->setProperties([
+			$model = new Model();
+			$model->setProperties([
 				new Varchar('test', 10),
 				'random'
 			]);
