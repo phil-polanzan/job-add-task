@@ -7,7 +7,7 @@ use App\ModelProperties\JobHour;
 
 class JobHourTest extends ModelPropertiesTest
 {
-	protected JobHour $jobHour;
+	private JobHour $jobHour;
 
 	public function testNotValidStep(): void {
 		try {
