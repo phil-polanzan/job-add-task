@@ -22,14 +22,14 @@ class Date extends Property
 	{
 		$value = $this->getValue();
 		$dateObj = DateTime::createFromFormat(self::FORMAT_STD, $value);
-		$ok = parent::validate() && !is_null($dateObj) && !empty($dateObj);
 
-		if ($ok && !empty($value)) {
-			$parts = explode('-', $value);
-			$ok = checkdate($parts[1], $parts[2], $parts[0]);
+		if (!($this->notEmpty() && parent::validate() && !is_null($dateObj) && !empty($dateObj))) {
+			return false;
 		}
 
-		return $ok;
+		$parts = explode('-', $value);
+
+		return checkdate($parts[1], $parts[2], $parts[0]);
 	}
 
 	public function notEmpty() : bool
