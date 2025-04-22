@@ -64,6 +64,6 @@ Hava a look at the following links:
 2. [Link](https://stackoverflow.com/questions/2658173/set-up-apache-virtualhost-on-windows);
 
 ## Run tests
-In the project directory there's a **test** directory, to run them, with the terminal go the test directory
-you could run all of them withe following command `php run.php` or you could just execute the ones in a specific directory
-e.g. `php run.php --test-dir='ModelProperties/JobHour'`.
+In the project directory there's a **tests** directory, to run them, with the terminal go the test directory
+and type `vendor/bin/phpunit {file path}`,
+e.g. `vendor/bin/phpunit tests/Models/JobTest.php`
