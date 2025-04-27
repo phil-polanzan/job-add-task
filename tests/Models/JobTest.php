@@ -7,14 +7,16 @@ use PHPUnit\Framework\TestCase;
 
 class JobTest extends TestCase
 {
-	private function getJob(array $args) : Job {
+	private function getJob(array $args) : Job
+	{
 		$job = new Job();
 		$job->setPropertiesValues($args);
 
 		return $job;
 	}
 
-	public function testEmptyTitle() : void {
+	public function testEmptyTitle() : void
+	{
 		$job = $this->getJob([
 			'title' => '',
 			'description' => '',
@@ -26,7 +28,8 @@ class JobTest extends TestCase
 		$this->assertFalse($job->validate());
 	}
 
-	public function testLongerTitle() : void {
+	public function testLongerTitle() : void
+	{
 		$job = $this->getJob([
 			'title' => '012345678901234567890123456789012345678901234567891',
 			'description' => '',
@@ -38,7 +41,8 @@ class JobTest extends TestCase
 		$this->assertFalse($job->validate());
 	}
 
-	public function testNotValidEntryDate() : void {
+	public function testNotValidEntryDate() : void
+	{
 		$job = $this->getJob([
 			'title' => 'Title',
 			'description' => 'Description',
@@ -50,7 +54,8 @@ class JobTest extends TestCase
 		$this->assertFalse($job->validate());
 	}
 
-	public function testNotValidHours() : void {
+	public function testNotValidHours() : void
+	{
 		$job = $this->getJob([
 			'title' => 'Title',
 			'description' => 'Description',
@@ -62,7 +67,8 @@ class JobTest extends TestCase
 		$this->assertFalse($job->validate());
 	}
 
-	public function testNotStartDate() : void {
+	public function testNotStartDate() : void
+	{
 		$job = $this->getJob([
 			'title' => 'Title',
 			'description' => 'Description',
@@ -74,7 +80,8 @@ class JobTest extends TestCase
 		$this->assertFalse($job->validate());
 	}
 
-	public function testEmptyEndDate() : void {
+	public function testEmptyEndDate() : void
+	{
 		$job = $this->getJob([
 			'title' => 'Title',
 			'description' => 'Description',
@@ -86,7 +93,8 @@ class JobTest extends TestCase
 		$this->assertFalse($job->validate());
 	}
 
-	public function testEmptyStartDate() : void {
+	public function testEmptyStartDate() : void
+	{
 		$job = $this->getJob([
 			'title' => 'Title',
 			'description' => 'Description',
@@ -98,7 +106,8 @@ class JobTest extends TestCase
 		$this->assertFalse($job->validate());
 	}
 
-	public function testSuccess() : void {
+	public function testSuccess() : void
+	{
 		$job = $this->getJob([
 			'title' => 'Title',
 			'description' => 'Description',

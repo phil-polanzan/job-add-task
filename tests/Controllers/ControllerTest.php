@@ -10,7 +10,8 @@ class ControllerTest extends TestCase
 {
 	protected PostRequest $request;
 
-	public function setUp(): void {
+	public function setUp(): void
+	{
 		$this->request = new PostRequest();
 	}
 
@@ -20,7 +21,8 @@ class ControllerTest extends TestCase
 		return $this->request->getResponse();
 	}
 
-	protected function assertEqualsResponseStatus(Response $response, string $status) : void {
+	protected function assertEqualsResponseStatus(Response $response, string $status) : void
+	{
 		$this->assertEquals($response->getData()['status'], $status);
 	}
 }

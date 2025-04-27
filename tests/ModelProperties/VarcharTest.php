@@ -7,7 +7,8 @@ use App\ModelProperties\Varchar;
 
 class VarcharTest extends ModelPropertiesTest
 {
-	public function testNegativeLength() : void {
+	public function testNegativeLength() : void
+	{
 		try {
 			$varchar = new Varchar('test', -1);
 		} catch (AppException $e) {
@@ -15,7 +16,8 @@ class VarcharTest extends ModelPropertiesTest
 		}
 	}
 
-	public function testOutOfLength() : void {
+	public function testOutOfLength() : void
+	{
 		try {
 			$varchar = new Varchar('test', 256);
 		} catch (AppException $e) {
@@ -23,7 +25,8 @@ class VarcharTest extends ModelPropertiesTest
 		}
 	}
 
-	public function testSuccess() : void {
+	public function testSuccess() : void
+	{
 		$varchar = new Varchar('test', 50);
 		$this->assertInstanceOf(Varchar::class, $varchar);
 	}

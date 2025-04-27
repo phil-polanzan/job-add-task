@@ -6,12 +6,14 @@ use App\Responses\Response;
 
 class JobControllerTest extends ControllerTest
 {
-	public function testControllerNotFound() : void {
+	public function testControllerNotFound() : void
+	{
 		$response = $this->getResponse(['controller' => 'controller']);
 		$this->assertEqualsResponseStatus($response, Response::STATUS_ERROR);
 	}
 
-	public function testJobValidationError() : void {
+	public function testJobValidationError() : void
+	{
 		$response = $this->getResponse([
 			'controller' => 'job-controller',
 			'title' => ''
@@ -19,7 +21,8 @@ class JobControllerTest extends ControllerTest
 		$this->assertEqualsResponseStatus($response, Response::STATUS_ERROR);
 	}
 
-	public function testSuccess() : void {
+	public function testSuccess() : void
+	{
 		$response = $this->getResponse([
 			'controller' => 'job-controller',
 			'title' => 'Title',

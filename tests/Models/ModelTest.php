@@ -10,7 +10,8 @@ use PHPUnit\Framework\TestCase;
 
 class ModelTest extends TestCase
 {
-	public function testNotValidProperty() : void {
+	public function testNotValidProperty() : void
+	{
 		try {
 			$model = new Model();
 			$model->setProperties([

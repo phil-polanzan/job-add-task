@@ -7,7 +7,8 @@ use App\ModelProperties\Numeric;
 
 class NumericTest extends ModelPropertiesTest
 {
-	public function testNotValidMax(): void {
+	public function testNotValidMax(): void
+	{
 		try {
 			$numeric = new Numeric('test');
 			$numeric->setMinValue(8);
@@ -17,7 +18,8 @@ class NumericTest extends ModelPropertiesTest
 		}
 	}
 
-	public function testNotValidMin(): void {
+	public function testNotValidMin(): void
+	{
 		try {
 			$numeric = new Numeric('test');
 			$numeric->setMaxValue(7.5);
@@ -27,7 +29,8 @@ class NumericTest extends ModelPropertiesTest
 		}
 	}
 
-	public function testNotValidType(): void {
+	public function testNotValidType(): void
+	{
 		try {
 			$numeric = new Numeric('test', 'double');
 		} catch (AppException $e) {
@@ -35,7 +38,8 @@ class NumericTest extends ModelPropertiesTest
 		}
 	}
 
-	public function testSuccess(): void {
+	public function testSuccess(): void
+	{
 		$numeric = new Numeric('test', Numeric::TYPE_FLOAT);
 		$this->assertInstanceOf(Numeric::class, $numeric);
 	}
