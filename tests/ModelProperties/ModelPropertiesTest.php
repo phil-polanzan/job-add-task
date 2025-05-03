@@ -1,6 +1,6 @@
 <?php
 
-namespace Unittests\ModelProperties;
+namespace Tests\ModelProperties;
 
 use App\Exceptions\ModelPropertyException;
 use PHPUnit\Framework\TestCase;

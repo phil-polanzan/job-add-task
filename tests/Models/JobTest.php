@@ -1,6 +1,6 @@
 <?php
 
-namespace Models;
+namespace Tests\Models;
 
 use App\Models\Job;
 use PHPUnit\Framework\TestCase;

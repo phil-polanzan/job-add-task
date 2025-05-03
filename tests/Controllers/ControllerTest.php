@@ -1,6 +1,6 @@
 <?php
 
-namespace Unittests\Controllers;
+namespace Tests\Controllers;
 
 use App\Requests\PostRequest;
 use App\Responses\Response;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Unittests\Models;
+namespace Tests\Models;
 
 use App\Exceptions\AppException;
 use App\Exceptions\ModelException;
