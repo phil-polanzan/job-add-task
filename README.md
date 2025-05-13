@@ -1,4 +1,4 @@
-# Job Add Task - WorkPal Full-stack Technical Test
+# Job Add Task - Full-stack Technical Test
 
 ## Overview of task:
 
